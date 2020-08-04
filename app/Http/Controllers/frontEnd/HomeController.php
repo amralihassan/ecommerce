@@ -9,6 +9,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('layouts.frontEnd.site');
+        return view('layouts.frontEnd.pages.dashboard');
     }
 }

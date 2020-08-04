@@ -55,7 +55,9 @@ data-open="click" data-menu="vertical-overlay-menu" data-col="2-columns">
       <div class="content-header row">
       </div>
       <div class="content-body">
-
+          <div class="container">
+              @yield('content')
+          </div>
       </div>
     </div>
   </div>

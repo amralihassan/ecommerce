@@ -42,6 +42,10 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
             Route::post('user-profile','AdminController@updateProfile')->name('update.profile');
 
 
-
         });
+
+});
+Route::group(['namespace'=>'frontEnd'],function(){
+    Route::get('/home','HomeController@index')->name('home');
+
 });

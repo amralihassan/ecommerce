@@ -13,12 +13,6 @@
                 </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.website') }}</span>
             </a>
         </li>
-        {{-- users --}}
-        <li class=" nav-item">
-            <a href="{{route('main.dashboard')}}"><i class="la la-users">
-                </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.user_accounts') }}</span>
-            </a>
-        </li>
         {{-- special_offers --}}
         <li class=" nav-item">
             <a href="{{route('main.dashboard')}}"><i class="la la-gift">

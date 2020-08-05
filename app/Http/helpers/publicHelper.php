@@ -51,7 +51,7 @@ if (!function_exists('lang')) {
 		}
 		else{
 			if (adminAuth()->check()) {
-				session()->put('lang',authInfo()->preferredLanguage);
+				session()->put('lang',authInfo()->lang);
 			}
 
 			return session('lang');

@@ -19,7 +19,6 @@ class AdminAuth extends Controller
 
     public function setLogin(LoginRequest $request)
     {
-
         $rememberMe = $request->input('rememberMe')==1 ?true:false;
 
         if (adminAuth()->attempt(['username'=>$request->input('username'),'password'=>$request->input('password')],$rememberMe))
@@ -33,9 +32,9 @@ class AdminAuth extends Controller
             if (!session()->has('lang')) {
                 session()->put('lang',authInfo()->lang);
             }
+            // dd(session('lang'));
             return redirect(aurl('dashboard'));
         }
-        dd('test');
         return redirect(aurl('login'))->with('error',trans('admin.invalid_login'));
     }
 

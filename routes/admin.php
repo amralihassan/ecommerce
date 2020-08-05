@@ -22,8 +22,24 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
                 Route::get('/login','AdminAuth@login');
             }
         });
+	    // ========================================= LANG ================================================
+            Route::get('lang/{lang}',function($lang){
+                // check session lang and destroy session
+                $data['lang'] = $lang;
 
-    // ================================= LOGOUT ==============================================
+                if (adminAuth()->check()) {
+                    \App\Models\Admin::where('id',authInfo()->id)->update($data);
+                }
+
+                session()->has('lang')?session()->forget('lang'):'';
+                // set new session
+                $lang == 'ar'?session()->put('lang','ar'):session()->put('lang','en');
+                //return to previous page
+                return back();
+            });
+        // ========================================= END LANG ============================================
+
+        // ================================= LOGOUT ==============================================
 
     Route::group(['middleware'=>'admin'],function(){
             Route::any('/logout','AdminAuth@logout')->name('logout');

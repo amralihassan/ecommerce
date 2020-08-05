@@ -16,15 +16,32 @@
   rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
   @yield('styles')
+  @if (session('lang') == trans('admin.ar') || session('lang') == 'ar'))
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/vendors.css')}}">
   <!-- END VENDOR CSS-->
   <!-- BEGIN MODERN CSS-->
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/app.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/custom-rtl.css')}}">
+  @else
+  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/vendors.css')}}">
+  <!-- END VENDOR CSS-->
+  <!-- BEGIN MODERN CSS-->
+  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/app.css')}}">
+  {{-- <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/custom-rtl.css')}}"> --}}
+  @endif
+
   <!-- END MODERN CSS-->
   <!-- BEGIN Page Level CSS-->
+
+  @if (session('lang') == trans('admin.ar') || session('lang') == 'ar'))
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/core/menu/menu-types/vertical-menu.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/core/colors/palette-gradient.css')}}">
+  @else
+  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/core/colors/palette-gradient.css')}}">
+  @endif
+
+
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/vendors/css/cryptocoins/cryptocoins.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/fonts/line-awesome/css/line-awesome.min.css')}}">
   {{-- sweet alert style --}}
@@ -33,14 +50,20 @@
   <!-- BEGIN Custom CSS-->
 
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/fonts/simple-line-icons/style.min.css')}}">
+  @if (session('lang') == trans('admin.ar') || session('lang') == 'ar'))
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/assets/css/style-rtl.css')}}">
-  <!-- END Custom CSS-->
   <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+  @else
+  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/assets/css/style.css')}}">
+  @endif
+  <!-- END Custom CSS-->
+  @if (session('lang') == trans('admin.ar') || session('lang') == 'ar'))
+    <style>
+        body,h1,h2,h3,h4,h5,h6,a,li,p,span {font-family: 'Cairo', sans-serif;}
+    </style>
+  @endif
 
   <style>
-      body,h1,h2,h3,h4,h5,h6,a,li,p,span {
-          font-family: 'Cairo', sans-serif;
-      }
     .sweet-alert h2 {font-family: 'Cairo', sans-serif;font-weight: 500;}
     .sweet-alert p {font-family: 'Cairo', sans-serif;}
     .sweet-alert button {font-family: 'Cairo', sans-serif;}
@@ -53,7 +76,8 @@ data-open="click" data-menu="vertical-menu" data-col="2-columns">
     @include('layouts.backEnd.includes._nav')
   <!-- ////////////////////////////////////////////////////////////////////////////-->
   @include('layouts.backEnd.includes.sidebars._main')
-
+  {{-- {{dd(Config('app.locale'))}} --}}
+    {{-- {{dd(session('lang'))}} --}}
   <div class="app-content content">
     <div class="content-wrapper">
         @yield('content')

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-9 mt-3">
+    <div class="col-12 mt-3">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -8,13 +8,13 @@
             </ol>
             <div class="carousel-inner" role="listbox">
               <div class="carousel-item active">
-                <img src="{{asset('cpanel/app-assets/images/carousel/32.jpg')}}" alt="First slide">
+                <img width="100%" src="{{asset('cpanel/app-assets/images/carousel/32.jpg')}}" alt="First slide">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('cpanel/app-assets/images/carousel/33.png')}}" alt="Second slide">
+                <img width="100%" src="{{asset('cpanel/app-assets/images/carousel/33.png')}}" alt="Second slide">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('cpanel/app-assets/images/carousel/34.png')}}" alt="Third slide">
+                <img width="100%" src="{{asset('cpanel/app-assets/images/carousel/34.png')}}" alt="Third slide">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -27,8 +27,5 @@
             </a>
         </div>
     </div>
-    <div class="col-3 mt-3">
-        <img class="dashboard-image card-img-top img-fluid" src="{{asset('cpanel/app-assets/images/carousel/c1.jpg')}}">
-        <img class="dashboard-image card-img-top img-fluid" src="{{asset('cpanel/app-assets/images/carousel/c2.png')}}">
-    </div>
+
 </div>

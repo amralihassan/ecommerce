@@ -9,7 +9,7 @@
         </li>
         {{-- website --}}
         <li class=" nav-item">
-            <a href="{{route('home')}}"><i class="la la-globe">
+            <a target="blank" href="{{route('home')}}"><i class="la la-globe">
                 </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.website') }}</span>
             </a>
         </li>

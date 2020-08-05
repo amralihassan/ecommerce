@@ -11,4 +11,12 @@ class HomeController extends Controller
     {
         return view('layouts.frontEnd.pages.dashboard');
     }
+    public function product()
+    {
+        return view('layouts.frontEnd.pages.product');
+    }
+    public function allProducts()
+    {
+        return view('layouts.frontEnd.pages.allProducts');
+    }
 }

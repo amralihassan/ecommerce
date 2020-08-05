@@ -64,43 +64,5 @@ if (!function_exists('settingHelper')) {
 		return \App\Models\Setting::orderBy('id','desc')->first();
 	}
 }
-if (!function_exists('history')) {
-	function history($section,$crud,$history)
-	{
-        \App\Models\History::create([
-            'section'   => $section,
-            'history'   => $history,
-            'crud'      => $crud,
-            'user_id'   => auth()->id()
-        ]);
-	}
-}
-if (!function_exists('studentFees')) {
-	function studentFees($student)
-	{
-        $gradeFees = GradeFees::
-        where('division_id',$student->division_id)
-        ->where('grade_id',$student->grade_id)
-        ->where('year_id',currentYear())
-        ->get();
 
-        foreach ($gradeFees as $fees) {
-            StudentFees::create([
-                'division_id'   =>  $student->division_id,
-                'grade_id'      =>  $student->grade_id,
-                'year_id'       =>  currentYear(),
-                'student_id'    =>  $student->id,
-                'fees_id'       =>  $fees->fees_id,
-                'fees'          =>  $fees->fees,
-                'admin_id'      =>  auth()->id()
-            ]);
-        }
 
-	}
-}
-if (!function_exists('currentYear')) {
-	function currentYear()
-	{
-		return Year::first()->id;
-	}
-}

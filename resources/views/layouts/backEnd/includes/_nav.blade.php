@@ -5,8 +5,8 @@
           <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
           <li class="nav-item">
             <a class="navbar-brand" href="{{route('main.dashboard')}}">
-              <img class="brand-logo" alt="modern admin logo" src="{{asset('cpanel/app-assets/images/logo/logo.png')}}">
-              <h3 class="brand-text">كابيتال جيت للغات</h3>
+              <img class="brand-logo" alt="logo" src="{{asset('images/website/'.settingHelper()->logo)}}">
+            <h3 class="brand-text">{{session('lang') == 'ar' ?settingHelper()->siteNameArabic:settingHelper()->siteNameEnglish}}</h3>
             </a>
           </li>
           <li class="nav-item d-md-none">
@@ -44,6 +44,7 @@
                   <img src="{{asset('/images/imagesProfile/'.authInfo()->imageProfile)}}" alt="avatar"><i></i></span>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{{ route('site.settings') }}"><i class="ft-settings"></i>{{ trans('admin.settings') }}</a>
                 <a class="dropdown-item" href="{{route('user-profile')}}"><i class="ft-user"></i>{{ trans('admin.profile') }}</a>
                 <a class="dropdown-item" href="{{route('accounts.index')}}"><i class="ft-users"></i> {{ trans('admin.users_accounts') }}</a>
                 <a class="dropdown-item" href="{{aurl('password')}}"><i class="ft-lock"></i> {{ trans('admin.change_password') }}</a>

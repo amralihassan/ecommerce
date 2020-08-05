@@ -3,8 +3,6 @@ return [
     'setting_updated'                           => 'تم تحديث الاعدادات بنجاح',
     'site_arabic_name_required'                 => 'يحب ادخال اسم الموقع باللغة العربية',
     'site_english_name_required'                => 'يجب ادخال اسم الموقع باللغة الانجليزية',
-    'open_time_required'                        => 'يجب ادخال بداية ساعات العمل',
-    'close_time_required'                       => 'يجب ادخال نهاية ساعات العمل',
     'logo_image_validate'                       => 'يجب ان يكون نوع الملف صورة',
     'logo_mimes_validate'                       => 'يجب ان يكون نوع الصورة jpg/png',
     'icon_mimes_validate'                       => 'يجب ان يكون من نوغ ico',

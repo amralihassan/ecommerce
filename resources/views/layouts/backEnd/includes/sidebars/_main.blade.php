@@ -13,7 +13,35 @@
                 </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.website') }}</span>
             </a>
         </li>
-
+        {{-- users --}}
+        <li class=" nav-item">
+            <a href="{{route('main.dashboard')}}"><i class="la la-users">
+                </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.user_accounts') }}</span>
+            </a>
+        </li>
+        {{-- special_offers --}}
+        <li class=" nav-item">
+            <a href="{{route('main.dashboard')}}"><i class="la la-gift">
+                </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.special_offers') }}</span>
+            </a>
+        </li>
+        {{-- products --}}
+        <li class=" nav-item">
+            <a href="{{route('main.dashboard')}}"><i class="la la-apple">
+                </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.products') }}</span>
+            </a>
+        </li>
+        {{-- settings --}}
+        <li class=" nav-item"><a href="#"><i class="la la-gear"></i><span class="menu-title" data-i18n="nav.dash.main">{{ trans('admin.settings') }}</span></a>
+            <ul class="menu-content">
+              <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.countries') }}</a></li>
+              <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.cities') }}</a></li>
+              <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.states') }}</a></li>
+              <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.categories') }}</a></li>
+              <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.departments') }}</a></li>
+              <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.specifications') }}</a></li>
+            </ul>
+          </li>
       </ul>
     </div>
   </div>

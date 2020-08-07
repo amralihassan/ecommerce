@@ -29,7 +29,7 @@
         <li class=" nav-item"><a href="#"><i class="la la-gear"></i><span class="menu-title" data-i18n="nav.dash.main">{{ trans('admin.settings') }}</span></a>
             <ul class="menu-content">
             <li class="{{request()->segment(3)=='countries'?'active':''}}"><a class="menu-item" href="{{route('countries.index')}}" data-i18n="nav.dash.ecommerce">{{ trans('admin.countries') }}</a></li>
-              <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.cities') }}</a></li>
+            <li class="{{request()->segment(3)=='cities'?'active':''}}"><a class="menu-item" href="{{route('cities.index')}}" data-i18n="nav.dash.ecommerce">{{ trans('admin.cities') }}</a></li>
               <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.states') }}</a></li>
               <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.categories') }}</a></li>
               <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.departments') }}</a></li>

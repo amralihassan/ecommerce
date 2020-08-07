@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin\BackEnd\Settings;
-
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CountryRequest;
 use App\Models\BackEnd\Settings\Country;
 use Illuminate\Http\Request;
 
@@ -65,22 +65,11 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CountryRequest $request)
     {
         $request->user()->countries()->create($request->only($this->attributes()));
         alert()->success(trans('msg.stored_successfully'), trans('admin.new_country'));
         return redirect()->route('countries.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Country  $country
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Country $country)
-    {
-        //
     }
 
     /**
@@ -101,7 +90,7 @@ class CountryController extends Controller
      * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(CountryRequest $request, Country $country)
     {
         $country->update($request->only($this->attributes()));
         alert()->success(trans('msg.updated_successfully'), trans('admin.edit_country'));
@@ -125,5 +114,33 @@ class CountryController extends Controller
             }
         }
         return response(['status'=>true]);
+    }
+    private function countries()
+    {
+        $countries = Country::all();
+        foreach ($countries as $country) {
+            $country->setAttribute('countryName',session('lang')=='en'?$country->en_country_name:$country->ar_country_name);
+        }
+        return $countries;
+    }
+    public function getCountries()
+    {
+        $output = "";
+        $output .='<option value="">'.trans('admin.select').'</option>';
+        foreach ($this->countries() as $country) {
+            $output .= ' <option value="'.$country->id.'">'.$country->countryName.'</option>';
+        };
+        return json_encode($output);
+    }
+    public function getCountrySelected()
+    {
+        $id = request()->get('country_id');
+        $output = "";
+        $output .='<option value="">'.trans('admin.select').'</option>';
+        foreach ($this->countries() as $country) {
+            $selected = $country->id == $id?"selected":"";
+            $output .= ' <option '.$selected.' value="'.$country->id.'">'.$country->countryName.'</option>';
+        };
+        return json_encode($output);
     }
 }

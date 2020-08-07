@@ -13,4 +13,12 @@ Route::group(['namespace'=>'BackEnd\Settings'],function(){
      */
     Route::resource('/settings/cities','CityController')->except('show','destroy');
     Route::post('cities/destroy','CityController@destroy')->name('cities.destroy');
+    Route::get('get/cities','CityController@getCities')->name('get.cities');
+    Route::put('city/selected','CityController@getCitySelected')->name('city.selected');
+
+    /**
+     * State
+     */
+    Route::resource('/settings/states','StateController')->except('show','destroy');
+    Route::post('states/destroy','StateController@destroy')->name('states.destroy');
 });

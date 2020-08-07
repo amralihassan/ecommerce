@@ -4,12 +4,13 @@ namespace App\Models\BackEnd\Settings;
 
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model
+class State extends Model
 {
     protected $fillable = [
-        'ar_city_name',
-        'en_city_name',
+        'ar_state_name',
+        'en_state_name',
         'country_id',
+        'city_id',
         'admin_id'
     ];
     public function admin()
@@ -21,5 +22,9 @@ class City extends Model
         return $this->belongsTo(Country::class);
 
     }
-    
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+
+    }
 }

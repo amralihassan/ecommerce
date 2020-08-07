@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin\BackEnd\Settings;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CityRequest;
-use App\Models\BackEnd\Settings\City;
+use App\Http\Requests\StateRequest;
+use App\Models\BackEnd\Settings\State;
 use Illuminate\Http\Request;
 
-class CityController extends Controller
+class StateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,11 @@ class CityController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $data = City::with('country')->get();
+            $data = State::with('country','city')->get();
             return datatables($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
-                           $btn = '<a class="btn btn-warning btn-sm" href="'.route('cities.edit',$data->id).'">
+                           $btn = '<a class="btn btn-warning btn-sm" href="'.route('states.edit',$data->id).'">
                            <i class=" la la-edit"></i>
                        </a>';
                             return $btn;
@@ -28,6 +28,10 @@ class CityController extends Controller
                     ->addColumn('country_id',function($data){
                         return session('lang') == 'ar' || session('lang') == trans('admin.ar') ?
                         $data->country->ar_country_name :$data->country->en_country_name;
+                    })
+                    ->addColumn('city_id',function($data){
+                        return session('lang') == 'ar' || session('lang') == trans('admin.ar') ?
+                        $data->city->ar_city_name :$data->city->en_city_name;
                     })
                     ->addColumn('check', function($data){
                            $btnCheck = '<label class="pos-rel">
@@ -39,7 +43,7 @@ class CityController extends Controller
                     ->rawColumns(['action','check'])
                     ->make(true);
         }
-        return view('layouts.backEnd.settings.cities.index',['title'=>trans('admin.cities')]);
+        return view('layouts.backEnd.settings.states.index',['title'=>trans('admin.states')]);
     }
 
     /**
@@ -49,14 +53,15 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('layouts.backEnd.settings.cities.create',['title'=>trans('admin.new_city')]);
+        return view('layouts.backEnd.settings.states.create',['title'=>trans('admin.new_state')]);
     }
     private function attributes()
     {
         return [
-            'ar_city_name',
-            'en_city_name',
+            'ar_state_name',
+            'en_state_name',
             'country_id',
+            'city_id',
             'admin_id'
         ];
     }
@@ -66,83 +71,55 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CityRequest $request)
+    public function store(StateRequest $request)
     {
-        $request->user()->cities()->create($request->only($this->attributes()));
-        alert()->success(trans('msg.stored_successfully'), trans('admin.new_city'));
-        return redirect()->route('cities.index');
+        $request->user()->states()->create($request->only($this->attributes()));
+        alert()->success(trans('msg.stored_successfully'), trans('admin.new_state'));
+        return redirect()->route('states.index');
     }
 
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\City  $city
+     * @param  \App\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit(State $state)
     {
-        return view('layouts.backEnd.settings.cities.edit',['title'=>trans('admin.edit_city'),'city'=>$city]);
+        return view('layouts.backEnd.settings.states.edit',['title'=>trans('admin.edit_state'),'state'=>$state]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\City  $city
+     * @param  \App\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function update(CityRequest $request, City $city)
+    public function update(StateRequest $request, State $state)
     {
-        $city->update($request->only($this->attributes()));
-        alert()->success(trans('msg.updated_successfully'), trans('admin.edit_city'));
-        return redirect()->route('cities.index');
+        $state->update($request->only($this->attributes()));
+        alert()->success(trans('msg.updated_successfully'), trans('admin.edit_state'));
+        return redirect()->route('states.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\City  $city
+     * @param  \App\State  $state
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function destroy(State $state)
     {
         if (request()->ajax()) {
             if (request()->has('id'))
             {
                 foreach (request('id') as $id) {
-                    City::destroy($id);
+                    State::destroy($id);
                 }
             }
         }
         return response(['status'=>true]);
-    }
-    private function cities()
-    {
-        $cities = City::all();
-        foreach ($cities as $city) {
-            $city->setAttribute('cityName',session('lang')=='en'?$city->en_city_name:$city->ar_city_name);
-        }
-        return $cities;
-    }
-    public function getCities()
-    {
-        $output = "";
-        $output .='<option value="">'.trans('admin.select').'</option>';
-        foreach ($this->cities() as $city) {
-            $output .= ' <option value="'.$city->id.'">'.$city->cityName.'</option>';
-        };
-        return json_encode($output);
-    }
-    public function getCitySelected()
-    {
-        $id = request()->get('city_id');
-        $output = "";
-        $output .='<option value="">'.trans('admin.select').'</option>';
-        foreach ($this->cities() as $city) {
-            $selected = $city->id == $id?"selected":"";
-            $output .= ' <option '.$selected.' value="'.$city->id.'">'.$city->cityName.'</option>';
-        };
-        return json_encode($output);
     }
 }

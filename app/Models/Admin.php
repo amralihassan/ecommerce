@@ -75,4 +75,8 @@ class Admin extends Authenticatable
     {
         return $this->hasMany('App\Models\BackEnd\Settings\City','admin_id');
     }
+    public function states()
+    {
+        return $this->hasMany('App\Models\BackEnd\Settings\State','admin_id');
+    }
 }

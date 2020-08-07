@@ -11,7 +11,7 @@ class AdminAuth extends Controller
     public function login()
     {
         if (session()->has('login') == true) {
-            return view('layouts.cpanel');
+            return redirect(aurl('dashboard'));
         }else{
             return view('admin.auth.login');
         }

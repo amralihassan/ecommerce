@@ -12,7 +12,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
 
             if (session()->has('login')) {
                 if (adminAuth()->check()) {
-                    Route::get('/dashboard','DashboardController@index')->name('main.dashboard');
+                    Route::get('/dashboard','DashboardController@index');
                 }
                 else{
                     Route::get('/login','AdminAuth@login');
@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
 
                 session()->has('lang')?session()->forget('lang'):'';
                 // set new session
-                $lang == 'ar'?session()->put('lang','ar'):session()->put('lang','en');
+                $lang == 'ar' || $lang == trans('admin.ar') ? session()->put('lang','ar'):session()->put('lang','en');
                 //return to previous page
                 return back();
             });
@@ -62,10 +62,12 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
             Route::get('/settings','SettingController@siteSettingPage')->name('site.settings');
             Route::post('update/settings','SettingController@updateSettings')->name('update.settings');
 
+            require 'BackEnd/settings.php';
+
         });
 
 });
-Route::group(['namespace'=>'frontEnd'],function(){
+Route::group(['namespace'=>'FrontEnd'],function(){
     Route::get('/','HomeController@index');
     Route::get('/home','HomeController@index')->name('home');
     Route::get('/product','HomeController@product')->name('product');

@@ -67,40 +67,9 @@ class Admin extends Authenticatable
     {
         return $this->attributes['username'] = $value;
     }
-    public function divisions()
+    public function countries()
     {
-        return $this->hasMany('App\Models\Student\Division','admin_id');
+        return $this->hasMany('App\Models\BackEnd\Settings\Country','admin_id');
     }
-    public function grades()
-    {
-        return $this->hasMany('App\Models\Student\Grade','admin_id');
-    }
-    public function years()
-    {
-        return $this->hasMany('App\Models\Student\Year','admin_id');
-    }
-    public function guardians()
-    {
-        return $this->hasMany('App\Models\Student\Guardian','admin_id');
-    }
-    public function students()
-    {
-        return $this->hasMany('App\Models\Student\Student','admin_id');
-    }
-    public function fees()
-    {
-        return $this->hasMany('App\Models\Fees\Feesment','admin_id');
-    }
-    public function invoices()
-    {
-        return $this->hasMany('App\Models\Fees\Invoice','admin_id');
-    }
-    public function payments()
-    {
-        return $this->hasMany('App\Models\Fees\Payment','admin_id');
-    }
-    public function grade_fees()
-    {
-        return $this->hasMany('App\Models\Fees\GradeFees','admin_id');
-    }
+    
 }

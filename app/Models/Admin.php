@@ -87,4 +87,8 @@ class Admin extends Authenticatable
     {
         return $this->hasMany('App\Models\BackEnd\Settings\Department','admin_id');
     }
+    public function specifications()
+    {
+        return $this->hasMany('App\Models\BackEnd\Settings\Specification','admin_id');
+    }
 }

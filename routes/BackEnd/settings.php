@@ -37,4 +37,12 @@ Route::group(['namespace'=>'BackEnd\Settings'],function(){
     Route::post('departments/destroy','DepartmentController@destroy')->name('departments.destroy');
     Route::get('get/departments','DepartmentController@getDepartments')->name('get.departments');
     Route::put('department/selected','DepartmentController@getDepartmentSelected')->name('department.selected');
+
+    /**
+     * Specification
+     */
+    Route::resource('/settings/specifications','SpecificationController')->except('show','destroy');
+    Route::post('specifications/destroy','SpecificationController@destroy')->name('specifications.destroy');
+    Route::get('get/specifications','SpecificationController@getSpecifications')->name('get.specifications');
+    Route::put('specification/selected','SpecificationController@getSpecificationselected')->name('specification.selected');
 });

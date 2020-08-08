@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
-
+use App\Models\BackEnd\Offer;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('layouts.frontEnd.pages.dashboard');
+        $offers = Offer::all();
+        return view('layouts.frontEnd.pages.dashboard',compact('offers'));
     }
     public function product()
     {

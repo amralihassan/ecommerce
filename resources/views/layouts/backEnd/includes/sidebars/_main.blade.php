@@ -2,7 +2,7 @@
     <div class="main-menu-content">
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         {{-- dashboard --}}
-        <li class=" nav-item">
+        <li class=" nav-item {{request()->segment(2)=='dashboard'?'active':''}}">
             <a href="{{route('main.dashboard')}}"><i class="la la-home">
                 </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.dashboard') }}</span>
             </a>
@@ -14,8 +14,8 @@
             </a>
         </li>
         {{-- special_offers --}}
-        <li class=" nav-item">
-            <a href="{{route('main.dashboard')}}"><i class="la la-gift">
+        <li class=" nav-item {{request()->segment(3)=='offers'?'active':''}}">
+            <a href="{{route('offers.index')}}"><i class="la la-gift">
                 </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.special_offers') }}</span>
             </a>
         </li>

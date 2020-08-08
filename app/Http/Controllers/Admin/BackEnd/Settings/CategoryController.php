@@ -72,7 +72,6 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $request->user()->categories()->create($request->only($this->attributes()) + ['icon'=>$this->uploadIcon()]);
-
         alert()->success(trans('msg.stored_successfully'), trans('admin.new_category'));
         return redirect()->route('categories.index');
     }

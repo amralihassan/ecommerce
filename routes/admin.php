@@ -62,10 +62,15 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
             Route::get('/settings','SettingController@siteSettingPage')->name('site.settings');
             Route::post('update/settings','SettingController@updateSettings')->name('update.settings');
 
+            // settings
             require 'BackEnd/settings.php';
 
+            Route::group(['namespace'=>'BackEnd'],function(){
+            // Offer
+                Route::resource('/offers','OfferController')->except('show','destroy');
+                Route::post('offers/destroy','OfferController@destroy')->name('offers.destroy');
+            });
         });
-
 });
 Route::group(['namespace'=>'FrontEnd'],function(){
     Route::get('/','HomeController@index');

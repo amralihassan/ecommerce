@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control">{{ trans('admin.en_city_name') }}</label>
+                          <label class="col-md-3 label-control">{{ trans('admin.city') }}</label>
                           <div class="col-md-9">
                             <select name="country_id" id="country_id" class="form-control">
                             </select>

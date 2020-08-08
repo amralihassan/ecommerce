@@ -88,11 +88,11 @@ class CategoryController extends Controller
         {
             if (!empty($iconName)) {
                             // remove old image
-            $image_path = public_path("/images/icon/".$iconName->icon);
-            // return dd($image_path);
-            if(File::exists($image_path)) {
-                File::delete($image_path);
-            }
+                $image_path = public_path("/images/icon/".$iconName->icon);
+                // return dd($image_path);
+                if(File::exists($image_path)) {
+                    File::delete($image_path);
+                }
             }
 
             $icon = request('icon');
@@ -142,6 +142,12 @@ class CategoryController extends Controller
             if (request()->has('id'))
             {
                 foreach (request('id') as $id) {
+                    $iconName = Category::find($id);
+                    $image_path = public_path("/images/icon/".$iconName->icon);
+                    // return dd($image_path);
+                    if(File::exists($image_path)) {
+                        File::delete($image_path);
+                    }
                     Category::destroy($id);
                 }
             }

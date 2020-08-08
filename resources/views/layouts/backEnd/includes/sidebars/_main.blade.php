@@ -32,7 +32,7 @@
             <li class="{{request()->segment(3)=='cities'?'active':''}}"><a class="menu-item" href="{{route('cities.index')}}" data-i18n="nav.dash.ecommerce">{{ trans('admin.cities') }}</a></li>
             <li class="{{request()->segment(3)=='states'?'active':''}}"><a class="menu-item" href="{{route('states.index')}}" data-i18n="nav.dash.ecommerce">{{ trans('admin.states') }}</a></li>
             <li class="{{request()->segment(3)=='categories'?'active':''}}"><a class="menu-item" href="{{route('categories.index')}}" data-i18n="nav.dash.ecommerce">{{ trans('admin.categories') }}</a></li>
-              <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.departments') }}</a></li>
+            <li class="{{request()->segment(3)=='departments'?'active':''}}"><a class="menu-item" href="{{route('departments.index')}}" data-i18n="nav.dash.ecommerce">{{ trans('admin.departments') }}</a></li>
               <li><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce">{{ trans('admin.specifications') }}</a></li>
             </ul>
           </li>

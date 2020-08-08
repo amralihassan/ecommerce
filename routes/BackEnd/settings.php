@@ -29,4 +29,12 @@ Route::group(['namespace'=>'BackEnd\Settings'],function(){
     Route::post('categories/destroy','CategoryController@destroy')->name('categories.destroy');
     Route::get('get/categories','CategoryController@getCategories')->name('get.categories');
     Route::put('category/selected','CategoryController@getCategorySelected')->name('category.selected');
+
+    /**
+     * Department
+     */
+    Route::resource('/settings/departments','DepartmentController')->except('show','destroy');
+    Route::post('departments/destroy','DepartmentController@destroy')->name('departments.destroy');
+    Route::get('get/departments','DepartmentController@getDepartments')->name('get.departments');
+    Route::put('department/selected','DepartmentController@getDepartmentSelected')->name('department.selected');
 });

@@ -2,21 +2,44 @@
     data-scroll-to-active="true">
     <div class="main-menu-content">
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-        <li class=" nav-item"><a href="index.html"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span><span class="badge badge badge-info badge-pill float-right mr-2">3</span></a>
-          <ul class="menu-content">
-            <li><a class="menu-item" href="dashboard-ecommerce.html" data-i18n="nav.dash.ecommerce">eCommerce</a>
-            </li>
-          </ul>
+        <li class=" nav-item">
+            <a href="{{route('home')}}">
+                <span class="menu-title" data-i18n="">{{ trans('admin.dashboard') }}</span>
+            </a>
+        </li>
+        <li class=" nav-item">
+            <a href="email-application.html">
+            <span class="menu-title" data-i18n="">{{ trans('admin.myPurchases') }}</span>
+            </a>
+        </li>
+
+        <li class=" nav-item">
+            <a href="email-application.html">
+            <span class="menu-title" data-i18n="">{{ trans('admin.customersService') }}</span>
+            </a>
+        </li>
+        <li class=" nav-item">
+            <a href="email-application.html">
+            <span class="menu-title" data-i18n="">{{ trans('admin.recentlyArrived') }}</span>
+            </a>
         </li>
         <li class=" navigation-header">
-            <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
+            <span data-i18n="nav.category.layouts">{{ trans('admin.categories') }}</span><i class="la la-ellipsis-h ft-minus" data-toggle="tooltip"
             data-placement="right" data-original-title="Layouts"></i>
         </li>
-
-        <li class=" nav-item"><a href="email-application.html"><i class="la la-envelope"></i><span class="menu-title" data-i18n="">Email Application</span></a>
+        @if (count($categories) > 0)
+        @foreach ($categories as $category)
+        <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="nav.dash.main">{{$category->ar_category_name}}</span></a>
+            <ul class="menu-content">
+                @foreach ($category->departments as $department)
+                    <li>
+                        <a class="menu-item" href="{{route('all.product')}}" data-i18n="nav.dash.ecommerce">{{$department->ar_department_name}}</a>
+                    </li>
+                @endforeach
+            </ul>
         </li>
-
-
+        @endforeach
+        @endif
 
       </ul>
     </div>

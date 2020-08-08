@@ -13,6 +13,7 @@ class Department extends Model
         'description',
         'keywords',
         'show',
+        'sort',
         'department_image',
         'admin_id'
     ];

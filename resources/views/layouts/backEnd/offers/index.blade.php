@@ -30,8 +30,8 @@
                         <div class="col-xl-4 col-md-6 col-sm-12">
                             <div class="card">
                             <div class="card-content">
-                                <img class="card-img-top img-fluid" src="{{asset('/images/offers\/').$offer->image_offer_name}}"
-                                alt="Card image cap">
+                                <a href="{{$offer->link}}"><img class="card-img-top img-fluid" src="{{asset('/images/offers\/').$offer->image_offer_name}}"
+                                alt="Card image cap"></a>
                                 <div class="card-body">
                                 <h4 class="card-title">{{$offer->title}}</h4>
                                 <p>

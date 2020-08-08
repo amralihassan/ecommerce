@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $data = Category::latest();
+            $data = Category::orderBy('sort','asc')->get();
             return datatables($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
@@ -59,6 +59,7 @@ class CategoryController extends Controller
             'ar_category_name',
             'en_category_name',
             'description',
+            'sort',
             'keywords',
             'admin_id'
         ];

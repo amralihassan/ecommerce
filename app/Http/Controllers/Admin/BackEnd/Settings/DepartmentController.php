@@ -17,7 +17,7 @@ class DepartmentController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $data = Department::with('category')->get();
+            $data = Department::with('category')->orderBy('sort','asc')->get();
             return datatables($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
@@ -65,7 +65,7 @@ class DepartmentController extends Controller
             'description',
             'show',
             'keywords',
-            // 'department_image',
+            'sort',
             'admin_id'
         ];
     }

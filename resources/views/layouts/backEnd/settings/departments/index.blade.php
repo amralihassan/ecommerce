@@ -39,6 +39,7 @@
                                 <th>{{trans('admin.en_department_name')}}</th>
                                 <th>{{trans('admin.category')}}</th>
                                 <th>{{trans('admin.display_in_site')}}</th>
+                                <th>{{trans('admin.sort')}}</th>
                                 <th>{{trans('admin.edit')}}</th>
                             </tr>
                         </thead>
@@ -83,6 +84,7 @@
               {data: 'en_department_name',  name: 'en_department_name'},
               {data: 'category_id',         name: 'category_id'},
               {data: 'show',                name: 'show'},
+              {data: 'sort',                name: 'sort'},
               {data: 'action', 	            name: 'action', orderable: false, searchable: false},
           ],
           @include('layouts.backEnd.includes.datatables._datatableLang')

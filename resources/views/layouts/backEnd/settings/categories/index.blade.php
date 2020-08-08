@@ -38,6 +38,7 @@
                                 <th>{{trans('admin.ar_category_name')}}</th>
                                 <th>{{trans('admin.en_category_name')}}</th>
                                 <th>{{trans('admin.keywords')}}</th>
+                                <th>{{trans('admin.sort')}}</th>
                                 <th>{{trans('admin.edit')}}</th>
                             </tr>
                         </thead>
@@ -81,6 +82,7 @@
               {data: 'ar_category_name',    name: 'ar_category_name'},
               {data: 'en_category_name',    name: 'en_category_name'},
               {data: 'keywords',            name: 'keywords'},
+              {data: 'sort',                name: 'sort'},
               {data: 'action', 	            name: 'action', orderable: false, searchable: false},
           ],
           @include('layouts.backEnd.includes.datatables._datatableLang')

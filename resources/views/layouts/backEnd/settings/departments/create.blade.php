@@ -81,6 +81,15 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control">{{ trans('admin.sort') }}</label>
+                          <div class="col-md-9">
+                            <input type="number" min="0" class="form-control " value="{{old('sort')}}" placeholder="{{ trans('admin.sort') }}"
+                              name="sort" ">
+                          </div>
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-md-3 label-control" >{{ trans('admin.department_image') }}</label>

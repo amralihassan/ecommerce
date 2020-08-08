@@ -77,14 +77,15 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
 
-    private function uploadIcon()
+    private function uploadIcon(Category $category = null)
     {
         $fileName = '';
+        if (!empty($category)) {
+            $iconName = Category::find($category->id);
+        }
+
         if (request()->hasFile('icon'))
         {
-            $iconName = Category::where('ar_category_name',request('ar_category_name'))
-            ->where('en_category_name',request('en_category_name'))->first();
-
             if (!empty($iconName)) {
                             // remove old image
             $image_path = public_path("/images/icon/".$iconName->icon);
@@ -102,7 +103,7 @@ class CategoryController extends Controller
             $icon->move($location,$fileName);
             $data['icon'] = $fileName;
         }
-        return $fileName;
+        return empty($fileName) ? $iconName->icon : $fileName ;
     }
     /**
      * Show the form for editing the specified resource.
@@ -124,7 +125,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        $category->update($request->only($this->attributes()) + ['icon'=>$this->uploadIcon()]);
+        $category->update($request->only($this->attributes()) + ['icon'=>$this->uploadIcon($category)]);
         alert()->success(trans('msg.updated_successfully'), trans('admin.edit_category'));
         return redirect()->route('categories.index');
     }

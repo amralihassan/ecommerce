@@ -38,11 +38,15 @@
                                     <strong>{{ trans('admin.start_time') }}</strong> : {{$offer->start_display}} <br>
                                     <strong>{{ trans('admin.end_time') }}</strong> : {{$offer->end_display}}
                                 </p>
-                                <a href="{{$offer->link}}">{{ trans('admin.offer') }}</a> |
-                                <a href="{{$offer->link}}">{{ trans('admin.editing') }}</a> |
-                                <a href="{{$offer->link}}">{{ trans('admin.delete') }}</a>
 
-                                {{-- <a href="#" class="btn btn-outline-pink">Go somewhere</a> --}}
+                                <form action="{{route('offers.destroy',$offer->id)}}" method="post" id="formData">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="{{$offer->link}}" class="btn btn-info btn-sm ">{{ trans('admin.offer') }}</a>
+                                    <a href="{{route('offers.edit',$offer->id)}}"class="btn btn-warning btn-sm ">{{ trans('admin.editing') }}</a>
+                                    <button id="btnDelete" type="submit" class="btn btn-danger btn-sm ">{{ trans('admin.delete') }}</button>
+                                </form>
+
                                 </div>
                             </div>
                             </div>
@@ -55,6 +59,26 @@
       </div>
     </div>
 </div>
-
-
+@endsection
+@section('script')
+<script>
+   $("form").submit(function(e){
+        event.preventDefault();
+        swal({
+            title: "{{trans('msg.delete_confirmation')}}",
+            text: "{{trans('admin.delete_offer_ask')}}",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "{{trans('msg.yes')}}",
+            cancelButtonText: "{{trans('msg.no')}}",
+            closeOnConfirm: false
+            },
+            function(){
+                $("#formData").submit();
+                // swal("{{trans('msg.delete')}}", "{{trans('msg.delete_successfully')}}", "success");
+        });
+        // $("#frm").submit();
+    });
+</script>
 @endsection

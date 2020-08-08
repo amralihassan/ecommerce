@@ -67,8 +67,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
 
             Route::group(['namespace'=>'BackEnd'],function(){
             // Offer
-                Route::resource('/offers','OfferController')->except('show','destroy');
-                Route::post('offers/destroy','OfferController@destroy')->name('offers.destroy');
+                Route::resource('/offers','OfferController')->except('show');
+                // Route::post('offers/destroy','OfferController@destroy')->name('offers.destroy');
             });
         });
 });

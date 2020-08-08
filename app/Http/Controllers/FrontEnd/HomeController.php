@@ -16,7 +16,8 @@ class HomeController extends Controller
     }
     public function product()
     {
-        return view('layouts.frontEnd.pages.product');
+        $categories = Category::with('departments')->orderBy('sort','asc')->get();
+        return view('layouts.frontEnd.pages.product',compact('categories'));
     }
     public function allProducts()
     {

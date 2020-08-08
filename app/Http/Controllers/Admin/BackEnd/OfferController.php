@@ -88,7 +88,7 @@ class OfferController extends Controller
      */
     public function edit(Offer $offer)
     {
-        //
+        return view('layouts.backEnd.offers.edit',['title'=>trans('admin.edit_offer'),'offer'=>$offer]);
     }
 
     /**
@@ -100,7 +100,9 @@ class OfferController extends Controller
      */
     public function update(Request $request, Offer $offer)
     {
-        //
+        $offer->update($request->only($this->attributes())+ ['image_offer_name'=>$this->uploadImageOffer($offer)]);
+        alert()->success(trans('msg.updated_successfully'), trans('admin.edit_offer'));
+        return redirect()->route('offers.index');
     }
 
     /**
@@ -111,20 +113,14 @@ class OfferController extends Controller
      */
     public function destroy(Offer $offer)
     {
-        if (request()->ajax()) {
-            if (request()->has('id'))
-            {
-                foreach (request('id') as $id) {
-                    $offerImage = Offer::find($id);
-                    $image_path = public_path("/images/offers/".$offerImage->image_offer_name);
+        $offerImage = Offer::findOrFail($offer->id);
+        $image_path = public_path("/images/offers/".$offerImage->image_offer_name);
 
-                    if(File::exists($image_path)) {
-                        File::delete($image_path);
-                    }
-                    Offer::destroy($id);
-                }
-            }
+        if(File::exists($image_path)) {
+            File::delete($image_path);
         }
-        return response(['status'=>true]);
+        Offer::destroy($offer->id);
+        alert()->success(trans('msg.delete_successfully'), trans('admin.special_offers'));
+        return redirect()->route('offers.index');
     }
 }

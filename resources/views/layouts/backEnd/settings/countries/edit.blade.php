@@ -30,7 +30,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control">{{ trans('admin.ar_country_name') }}</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control border-primary" value="{{$country->ar_country_name}}" placeholder="{{ trans('admin.ar_country_name') }}"
+                            <input type="text" class="form-control " value="{{$country->ar_country_name}}" placeholder="{{ trans('admin.ar_country_name') }}"
                               name="ar_country_name" ">
                           </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control">{{ trans('admin.en_country_name') }}</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control border-primary" value="{{$country->en_country_name}}" placeholder="{{ trans('admin.en_country_name') }}"
+                            <input type="text" class="form-control " value="{{$country->en_country_name}}" placeholder="{{ trans('admin.en_country_name') }}"
                               name="en_country_name" ">
                           </div>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control">{{ trans('admin.global_key') }}</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control border-primary" value="{{$country->global_key}}" placeholder="{{ trans('admin.global_key') }}"
+                            <input type="text" class="form-control " value="{{$country->global_key}}" placeholder="{{ trans('admin.global_key') }}"
                               name="global_key" ">
                           </div>
                         </div>
@@ -57,7 +57,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control">{{ trans('admin.currency') }}</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control border-primary" value="{{$country->currency}}" placeholder="{{ trans('admin.currency') }}"
+                            <input type="text" class="form-control " value="{{$country->currency}}" placeholder="{{ trans('admin.currency') }}"
                               name="currency" ">
                           </div>
                         </div>
@@ -66,7 +66,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control">{{ trans('admin.code') }}</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control border-primary" value="{{$country->code}}" placeholder="{{ trans('admin.code') }}"
+                            <input type="text" class="form-control " value="{{$country->code}}" placeholder="{{ trans('admin.code') }}"
                               name="code" ">
                           </div>
                         </div>

@@ -7,7 +7,7 @@
         <div class="breadcrumb-wrapper col-12">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{aurl('dashboard')}}">{{ trans('admin.dashboard') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{route('states.index')}}">{{ trans('admin.states') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{route('categories.index')}}">{{ trans('admin.categories') }}</a></li>
             <li class="breadcrumb-item active">{{$title}}
             </li>
           </ol>
@@ -20,55 +20,60 @@
       <div class="card">
         <div class="card-content collapse show">
           <div class="card-body">
-            <form class="form form-horizontal" method="POST" action="{{route('states.update',$state->id)}}">
+            <form class="form form-horizontal" method="POST" action="{{route('categories.store')}}" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
                 <div class="form-body">
                     <h4 class="form-section"> {{ $title }}</h4>
                     @include('layouts.backEnd.includes._msg')
                     <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control">{{ trans('admin.ar_state_name') }}</label>
+                          <label class="col-md-3 label-control">{{ trans('admin.ar_category_name') }}</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control " value="{{$state->ar_state_name}}" placeholder="{{ trans('admin.ar_state_name') }}"
-                              name="ar_state_name" ">
+                            <input type="text" class="form-control " value="{{old('ar_category_name')}}" placeholder="{{ trans('admin.ar_category_name') }}"
+                              name="ar_category_name" ">
                           </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control">{{ trans('admin.en_state_name') }}</label>
+                          <label class="col-md-3 label-control">{{ trans('admin.en_category_name') }}</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control " value="{{$state->en_state_name}}" placeholder="{{ trans('admin.en_state_name') }}"
-                              name="en_state_name" ">
+                            <input type="text" class="form-control " value="{{old('en_category_name')}}" placeholder="{{ trans('admin.en_category_name') }}"
+                              name="en_category_name" >
                           </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control">{{ trans('admin.country') }}</label>
+                          <label class="col-md-3 label-control">{{ trans('admin.description') }}</label>
                           <div class="col-md-9">
-                            <select name="country_id" id="country_id" class="form-control">
-                            </select>
+                              <textarea name="description" class="form-control "  cols="30" rows="5"></textarea>
                           </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control">{{ trans('admin.city') }}</label>
+                          <label class="col-md-3 label-control">{{ trans('admin.keywords') }}</label>
                           <div class="col-md-9">
-                            <select name="city_id" id="city_id" class="form-control">
-                            </select>
+                            <input type="text" class="form-control " value="{{old('keywords')}}" placeholder="{{ trans('admin.keywords') }}"
+                              name="keywords" ">
                           </div>
                         </div>
                     </div>
-
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control" >{{ trans('admin.icon') }}</label>
+                          <div class="col-md-9">
+                            <input  type="file" name="icon"/>
+                          </div>
+                        </div>
+                      </div>
                 </div>
                 <div class="form-actions left">
                     <button type="submit" class="btn btn-success">
                         <i class="la la-check-square-o"></i> {{ trans('admin.save') }}
                       </button>
-                    <button type="button" class="btn btn-warning mr-1" onclick="location.href='{{route('states.index')}}';">
+                    <button type="button" class="btn btn-warning mr-1" onclick="location.href='{{route('categories.index')}}';">
                     <i class="ft-x"></i> {{ trans('admin.cancel') }}
                   </button>
                 </div>
@@ -78,42 +83,4 @@
       </div>
     </div>
 </div>
-@endsection
-@section('script')
-<script>
-	    (function getCountrySelected()
-	    {
-			 var country_id = "{{ $state->country_id }}";
-	        $.ajax({
-				type:'POST',
-				url:'{{route("country.selected")}}',
-				data: {
-					_method     : 'PUT',
-					country_id    : country_id,
-					_token      : '{{ csrf_token() }}'
-				},
-	          dataType:'json',
-	          success:function(data){
-				$('#country_id').html(data);
-	          }
-	        });
-		}());
-        (function getCitySelected()
-	    {
-			 var city_id = "{{ $state->city_id }}";
-	        $.ajax({
-				type:'POST',
-				url:'{{route("city.selected")}}',
-				data: {
-					_method     : 'PUT',
-					city_id    : city_id,
-					_token      : '{{ csrf_token() }}'
-				},
-	          dataType:'json',
-	          success:function(data){
-				$('#city_id').html(data);
-	          }
-	        });
-		}());
-</script>
 @endsection

@@ -30,7 +30,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control">{{ trans('admin.ar_city_name') }}</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control border-primary" value="{{$city->ar_city_name}}" placeholder="{{ trans('admin.ar_city_name') }}"
+                            <input type="text" class="form-control " value="{{$city->ar_city_name}}" placeholder="{{ trans('admin.ar_city_name') }}"
                               name="ar_city_name" ">
                           </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control">{{ trans('admin.en_city_name') }}</label>
                           <div class="col-md-9">
-                            <input type="text" class="form-control border-primary" value="{{$city->en_city_name}}" placeholder="{{ trans('admin.en_city_name') }}"
+                            <input type="text" class="form-control " value="{{$city->en_city_name}}" placeholder="{{ trans('admin.en_city_name') }}"
                               name="en_city_name" ">
                           </div>
                         </div>

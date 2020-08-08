@@ -40,7 +40,7 @@
                           <label class="col-md-3 label-control" >{{ trans('admin.imageProfile') }}</label>
                           <div class="col-md-9">
                             <img class="editable img-responsive" alt="Alex's Avatar" id="avatar2" src="{{asset('/images/imagesProfile/'.authInfo()->imageProfile)}}" />
-                            <input multiple="" type="file" name="imageProfile"/>
+                            <input  type="file" name="imageProfile"/>
                           </div>
                         </div>
                       </div>

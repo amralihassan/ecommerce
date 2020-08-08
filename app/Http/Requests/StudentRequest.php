@@ -30,7 +30,7 @@ class StudentRequest extends FormRequest
             'reg_type'          => 'required',
             'reg_status'        => 'required',
             'nativeLang'        => 'required',
-            'second_lang'        => 'required',
+            'second_lang'       => 'required',
             'dob'               => 'required',
             'nationality'       => 'required',
             'religion'          => 'required',

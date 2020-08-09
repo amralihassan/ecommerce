@@ -66,9 +66,13 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
             require 'BackEnd/settings.php';
 
             Route::group(['namespace'=>'BackEnd'],function(){
-            // Offer
+                // Offer
                 Route::resource('/offers','OfferController')->except('show');
-                // Route::post('offers/destroy','OfferController@destroy')->name('offers.destroy');
+                // Seller
+                Route::resource('/sellers','SellerController')->except('show','destroy');
+                Route::post('sellers/destroy','SellerController@destroy')->name('sellers.destroy');
+                Route::get('get/sellers','SellerController@getSellers')->name('get.sellers');
+                Route::put('seller/selected','SellerController@getSellerSelected')->name('seller.selected');
             });
         });
 });

@@ -19,6 +19,12 @@
                 </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.special_offers') }}</span>
             </a>
         </li>
+        {{-- sellers --}}
+        <li class=" nav-item {{request()->segment(3)=='sellers'?'active':''}}">
+            <a href="{{route('sellers.index')}}"><i class="la la-truck">
+                </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.sellers') }}</span>
+            </a>
+        </li>
         {{-- products --}}
         <li class=" nav-item">
             <a href="{{route('main.dashboard')}}"><i class="la la-apple">

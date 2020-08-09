@@ -69,6 +69,7 @@
     .sweet-alert button {font-family: 'Cairo', sans-serif;}
     .sweet-alert {font-family: 'Cairo', sans-serif;}
   </style>
+  @yield('map')
 </head>
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar"
 data-open="click" data-menu="vertical-menu" data-col="2-columns">

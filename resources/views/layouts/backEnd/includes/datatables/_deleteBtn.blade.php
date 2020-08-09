@@ -29,10 +29,6 @@
                     // display success confirm message
                     .done(function(data) {
                         swal("{{trans('msg.delete')}}", "{{trans('msg.delete_successfully')}}", "success");
-                    })
-                    // display error message
-                    .error(function(data) {
-                        swal("{{trans('msg.error')}}", "{{trans('msg.fail')}}", "error");
                     });
                 }
             );

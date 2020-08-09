@@ -183,7 +183,7 @@ class DepartmentController extends Controller
         $id = request()->get('department_id');
         $output = "";
         $output .='<option value="">'.trans('admin.select').'</option>';
-        foreach ($this->cities() as $department) {
+        foreach ($this->departments() as $department) {
             $selected = $department->id == $id?"selected":"";
             $output .= ' <option '.$selected.' value="'.$department->id.'">'.$department->departmentName.'</option>';
         };

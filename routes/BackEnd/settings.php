@@ -45,4 +45,10 @@ Route::group(['namespace'=>'BackEnd\Settings'],function(){
     Route::post('specifications/destroy','SpecificationController@destroy')->name('specifications.destroy');
     Route::get('get/specifications','SpecificationController@getSpecifications')->name('get.specifications');
     Route::put('specification/selected','SpecificationController@getSpecificationselected')->name('specification.selected');
+
+    /**
+     * Definition
+     */
+    Route::resource('/settings/definitions','DefinitionController')->except('show','destroy');
+    Route::post('definitions/destroy','DefinitionController@destroy')->name('definitions.destroy');
 });

@@ -44,6 +44,15 @@
                           </div>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-md-3 label-control">{{ trans('admin.sort') }}</label>
+                          <div class="col-md-9">
+                            <input type="number" min="0" class="form-control " value="{{$specification->sort}}" placeholder="{{ trans('admin.sort') }}"
+                              name="sort" ">
+                          </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-actions left">
                     <button type="submit" class="btn btn-success">

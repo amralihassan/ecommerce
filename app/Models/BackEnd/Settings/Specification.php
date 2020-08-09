@@ -9,6 +9,7 @@ class Specification extends Model
     protected $fillable = [
         'ar_specification_name',
         'en_specification_name',
+        'sort',
         'admin_id'
     ];
     public function admin()

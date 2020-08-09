@@ -16,7 +16,7 @@ class SpecificationController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $data = Specification::latest();
+            $data = Specification::orderBy('sort','asc')->get();
             return datatables($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
@@ -52,6 +52,7 @@ class SpecificationController extends Controller
         return [
             'ar_specification_name',
             'en_specification_name',
+            'sort',
             'admin_id'
         ];
     }

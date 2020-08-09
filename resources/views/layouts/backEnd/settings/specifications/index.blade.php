@@ -36,6 +36,7 @@
                                 <th>#</th>
                                 <th>{{trans('admin.ar_specification_name')}}</th>
                                 <th>{{trans('admin.en_specification_name')}}</th>
+                                <th>{{trans('admin.sort')}}</th>
                                 <th>{{trans('admin.edit')}}</th>
                             </tr>
                         </thead>
@@ -77,6 +78,7 @@
               {data: 'DT_RowIndex',             name: 'DT_RowIndex', orderable: false, searchable: false},
               {data: 'ar_specification_name',   name: 'ar_specification_name'},
               {data: 'en_specification_name',   name: 'en_specification_name'},
+              {data: 'sort',                    name: 'sort'},
               {data: 'action', 	                name: 'action', orderable: false, searchable: false},
           ],
           @include('layouts.backEnd.includes.datatables._datatableLang')

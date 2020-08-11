@@ -52,4 +52,6 @@ Route::group(['namespace'=>'BackEnd\Settings'],function(){
      */
     Route::resource('/settings/definitions','DefinitionController')->except('show','destroy');
     Route::post('definitions/destroy','DefinitionController@destroy')->name('definitions.destroy');
+    Route::put('get/definitions','DefinitionController@getDefinitions')->name('get.definitions');
+    Route::put('definitions/selected','DefinitionController@getDefinitionSelected')->name('definitions.selected');
 });

@@ -55,3 +55,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     border: 1px solid #e6dede;
     padding:3px;
 }
+.w-50{
+    width: 150px !important;
+    padding-bottom: 5px!important;
+}

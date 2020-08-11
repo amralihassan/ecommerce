@@ -25,6 +25,8 @@ class CreateTableProducts extends Migration
             $table->enum('item_condition',['new','used'])->default('new');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->unsignedBigInteger('seller_id');
+            $table->foreign('seller_id')->references('id')->on('sellers');
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries');
             $table->unsignedBigInteger('department_id');

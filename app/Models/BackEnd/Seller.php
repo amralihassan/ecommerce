@@ -17,4 +17,8 @@ class Seller extends Model
     {
         return $this->belongsTo(App\Models\Admin::class);
     }
+    public function getActiveAttribute()
+    {
+        return $this->attributes['active'] == 'active' ? trans('admin.active') : trans('admin.not_active');
+    }
 }

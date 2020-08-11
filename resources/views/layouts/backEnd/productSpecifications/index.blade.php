@@ -21,6 +21,8 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
+          <h1 class="card-title"><strong>{{$productName}}</strong></h1>
+          <hr>
           <h4 class="card-title">{{$title}}</h4>
           <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
         </div>
@@ -34,12 +36,8 @@
                             <tr>
                                 <th><input type="checkbox" class="ace" /></th>
                                 <th>#</th>
-                                <th>{{trans('admin.ar_product_name')}}</th>
-                                {{-- <th>{{trans('admin.en_product_name')}}</th> --}}
-                                <th>{{trans('admin.category')}}</th>
-                                <th>{{trans('admin.department')}}</th>
-                                <th>{{trans('admin.price')}}</th>
                                 <th>{{trans('admin.specifications')}}</th>
+                                <th>{{trans('admin.definitions')}}</th>
                                 <th>{{trans('admin.edit')}}</th>
                             </tr>
                         </thead>
@@ -63,28 +61,24 @@
             buttons: [
                 // new btn
                 {
-                    "text": "{{trans('admin.new_product')}}",
+                    "text": "{{trans('admin.new_productSpecifications')}}",
                     "className": "btn btn-success buttons-print btn-success mr-1",
                     action : function ( e, dt, node, config ) {
-                        window.location.href = "{{route('products.create')}}";
+                        window.location.href = "{{route('productSpecifications.create',$id)}}";
                         }
                 },
                 // delete btn
-                @include('layouts.backEnd.includes.datatables._deleteBtn',['route'=>'products.destroy'])
+                @include('layouts.backEnd.includes.datatables._deleteBtn',['route'=>'productSpecifications.destroy'])
 
                 // default btns
                 @include('layouts.backEnd.includes.datatables._datatableBtn')
             ],
-          ajax: "{{ route('products.index') }}",
+          ajax: "{{ route('productSpecifications.index',$id) }}",
           columns: [
               {data: 'check',               name: 'check', orderable: false, searchable: false},
               {data: 'DT_RowIndex',         name: 'DT_RowIndex', orderable: false, searchable: false},
-              {data: 'ar_product_name',     name: 'ar_product_name'},
-            //   {data: 'en_product_name',     name: 'en_product_name'},
-              {data: 'category_id',         name: 'category_id'},
-              {data: 'department_id',       name: 'department_id'},
-              {data: 'price',               name: 'price'},
-              {data: 'add_specifications', 	name: 'add_specifications', orderable: false, searchable: false},
+              {data: 'specification_id',    name: 'specification_id'},
+              {data: 'definition_id',       name: 'definition_id'},
               {data: 'action', 	            name: 'action', orderable: false, searchable: false},
           ],
           @include('layouts.backEnd.includes.datatables._datatableLang')

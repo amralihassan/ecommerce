@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Models\BackEnd\Offer;
+use App\Models\BackEnd\Product;
 use App\Models\BackEnd\Settings\Category;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class HomeController extends Controller
     public function product()
     {
         $categories = Category::with('departments')->orderBy('sort','asc')->get();
-        return view('layouts.frontEnd.pages.product',compact('categories'));
+        $product = Product::with('category','department','productSpecifications')->first();
+        return view('layouts.frontEnd.pages.product',compact('categories','product'));
     }
     public function allProducts()
     {

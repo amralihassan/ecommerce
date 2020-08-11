@@ -117,10 +117,10 @@ class SellerController extends Controller
     public function getSellers()
     {
         $output = "";
-        $sellers = Seller::where('activition','yes')->get();
+        $sellers = Seller::where('activition','active')->get();
         $output .='<option value="">'.trans('admin.select').'</option>';
         foreach ($sellers as $seller) {
-            $output .= ' <option value="'.$seller->id.'">'.$seller->sellerName.'</option>';
+            $output .= ' <option value="'.$seller->id.'">'.$seller->seller_name.'</option>';
         };
         return json_encode($output);
     }
@@ -132,7 +132,7 @@ class SellerController extends Controller
         $output .='<option value="">'.trans('admin.select').'</option>';
         foreach ($sellers as $seller) {
             $selected = $seller->id == $id?"selected":"";
-            $output .= ' <option '.$selected.' value="'.$seller->id.'">'.$seller->sellerName.'</option>';
+            $output .= ' <option '.$selected.' value="'.$seller->id.'">'.$seller->seller_name.'</option>';
         };
         return json_encode($output);
     }

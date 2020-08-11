@@ -129,6 +129,15 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
+                              <label class="col-md-3 label-control">{{ trans('admin.sellerName') }}</label>
+                              <div class="col-md-9">
+                                <select name="seller_id" id="seller_id" class="form-control">
+                                </select>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
                             <label class="col-md-3 label-control">{{ trans('admin.note') }}</label>
                             <div class="col-md-9">
                                 <textarea name="note" class="form-control cols="30" rows="2">{{old('note')}}</textarea>
@@ -155,6 +164,18 @@
 @section('script')
 
 <script>
+        (function getSellers()
+	    {
+	        $.ajax({
+	          type:'ajax',
+	          method:'get',
+	          url:'{{route("get.sellers")}}',
+	          dataType:'json',
+	          success:function(data){
+	            $('#seller_id').html(data);
+	          }
+	        });
+		}());
     	(function getCategories()
 	    {
 	        $.ajax({

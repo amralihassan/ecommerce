@@ -122,4 +122,40 @@ class DefinitionController extends Controller
         }
         return response(['status'=>true]);
     }
+    private function definitions()
+    {
+        $definitions = request()->has('specification_id')? Definition::where('specification_id',request()->get('specification_id'))->get() :Definition::all();
+        foreach ($definitions as $definition) {
+            $definition->setAttribute('definitionName',session('lang')=='en'?$definition->en_value:$definition->ar_value);
+        }
+        return $definitions;
+    }
+    public function getDefinitions()
+    {
+        $output = "";
+        $output .='<option value="">'.trans('admin.select').'</option>';
+        foreach ($this->definitions() as $definition) {
+            $output .= ' <option value="'.$definition->id.'">'.$definition->definitionName.'</option>';
+        };
+        return json_encode($output);
+    }
+    public function getDefinitionsById()
+    {
+        $output =count($this->definitions()) > 0?'<option value="">'.trans('admin.select').'</option>':'';
+        foreach ($this->definitions() as $definition) {
+            $output .= ' <option value="'.$definition->id.'">'.$definition->definitionName.'</option>';
+        };
+        return json_encode($output);
+    }
+    public function getDefinitionSelected()
+    {
+        $id = request()->get('definition_id');
+        $output = "";
+        $output =count($this->definitions()) > 0?'<option value="">'.trans('admin.select').'</option>':'';
+        foreach ($this->definitions() as $definition) {
+            $selected = $definition->id == $id?"selected":"";
+            $output .= ' <option '.$selected.' value="'.$definition->id.'">'.$definition->definitionName.'</option>';
+        };
+        return json_encode($output);
+    }
 }

@@ -14,19 +14,19 @@
             </a>
         </li>
         {{-- special_offers --}}
-        <li class=" nav-item {{request()->segment(3)=='offers'?'active':''}}">
+        <li class=" nav-item {{request()->segment(2)=='offers'?'active':''}}">
             <a href="{{route('offers.index')}}"><i class="la la-gift">
                 </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.special_offers') }}</span>
             </a>
         </li>
         {{-- sellers --}}
-        <li class=" nav-item {{request()->segment(3)=='sellers'?'active':''}}">
+        <li class=" nav-item {{request()->segment(2)=='sellers'?'active':''}}">
             <a href="{{route('sellers.index')}}"><i class="la la-truck">
                 </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.sellers') }}</span>
             </a>
         </li>
         {{-- products --}}
-        <li class=" nav-item {{request()->segment(3)=='products'?'active':''}}">
+        <li class=" nav-item {{request()->segment(2)=='products'?'active':''}}">
             <a href="{{route('products.index')}}"><i class="la la-truck">
                 </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.products') }}</span>
             </a>

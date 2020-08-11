@@ -25,6 +25,12 @@ class ProductController extends Controller
                        </a>';
                             return $btn;
                     })
+                    ->addColumn('add_specifications', function($data){
+                        $btn = '<a class="btn btn-success btn-sm" href="'.route('productSpecifications.index',$data->id).'">
+                            <i class=" la la-plus"></i>
+                        </a>';
+                            return $btn;
+                    })
                     ->addColumn('department_id',function($data){
                         return session('lang') == 'ar' || session('lang') == trans('admin.ar') ?
                         $data->department->ar_department_name :$data->department->en_department_name;
@@ -40,7 +46,7 @@ class ProductController extends Controller
                                     </label>';
                             return $btnCheck;
                     })
-                    ->rawColumns(['action','check','category_id','department_id'])
+                    ->rawColumns(['action','check','category_id','department_id','add_specifications'])
                     ->make(true);
         }
         return view('layouts.backEnd.products.index',['title'=>trans('admin.products')]);
@@ -64,6 +70,7 @@ class ProductController extends Controller
             'en_description',
             'country_id',
             'department_id',
+            'seller_id',
             'category_id',
             'price',
             'discount_price',
@@ -83,17 +90,6 @@ class ProductController extends Controller
         $request->user()->products()->create($request->only($this->attributes()));
         alert()->success(trans('msg.stored_successfully'), trans('admin.new_product'));
         return redirect()->route('products.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        //
     }
 
     /**

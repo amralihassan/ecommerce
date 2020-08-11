@@ -163,7 +163,7 @@ class DepartmentController extends Controller
     }
     private function departments()
     {
-        $departments = Department::all();
+        $departments = request()->has('category_id')? Department::where('category_id',request()->get('category_id'))->get() :Department::all();
         foreach ($departments as $department) {
             $department->setAttribute('departmentName',session('lang')=='en'?$department->en_department_name:$department->ar_department_name);
         }
@@ -178,11 +178,19 @@ class DepartmentController extends Controller
         };
         return json_encode($output);
     }
+    public function getDepartmentsById()
+    {
+        $output =count($this->departments()) > 0?'<option value="">'.trans('admin.select').'</option>':'';
+        foreach ($this->departments() as $department) {
+            $output .= ' <option value="'.$department->id.'">'.$department->departmentName.'</option>';
+        };
+        return json_encode($output);
+    }
     public function getDepartmentSelected()
     {
         $id = request()->get('department_id');
         $output = "";
-        $output .='<option value="">'.trans('admin.select').'</option>';
+        $output =count($this->departments()) > 0?'<option value="">'.trans('admin.select').'</option>':'';
         foreach ($this->departments() as $department) {
             $selected = $department->id == $id?"selected":"";
             $output .= ' <option '.$selected.' value="'.$department->id.'">'.$department->departmentName.'</option>';

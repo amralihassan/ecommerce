@@ -26,8 +26,8 @@
             </a>
         </li>
         {{-- products --}}
-        <li class=" nav-item">
-            <a href="{{route('main.dashboard')}}"><i class="la la-apple">
+        <li class=" nav-item {{request()->segment(3)=='products'?'active':''}}">
+            <a href="{{route('products.index')}}"><i class="la la-truck">
                 </i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('admin.products') }}</span>
             </a>
         </li>

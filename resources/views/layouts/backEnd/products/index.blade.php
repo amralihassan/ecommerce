@@ -27,17 +27,18 @@
         <div class="card-content collapse show">
           <div class="card-body card-dashboard">
               <div class="table-responsive">
-                  <form action="{{route('sellers.destroy')}}" id='formData' method="post">
+                  <form action="{{route('products.destroy')}}" id='formData' method="post">
                     @csrf
                     <table id="dynamic-table" class="table data-table" >
                         <thead class="bg-info white">
                             <tr>
                                 <th><input type="checkbox" class="ace" /></th>
                                 <th>#</th>
-                                <th>{{trans('admin.seller_name')}}</th>
-                                <th>{{trans('admin.mobile')}}</th>
-                                <th>{{trans('admin.email')}}</th>
-                                <th>{{trans('admin.activition')}}</th>
+                                <th>{{trans('admin.ar_product_name')}}</th>
+                                {{-- <th>{{trans('admin.en_product_name')}}</th> --}}
+                                <th>{{trans('admin.category')}}</th>
+                                <th>{{trans('admin.department')}}</th>
+                                <th>{{trans('admin.price')}}</th>
                                 <th>{{trans('admin.edit')}}</th>
                             </tr>
                         </thead>
@@ -61,26 +62,27 @@
             buttons: [
                 // new btn
                 {
-                    "text": "{{trans('admin.new_seller')}}",
+                    "text": "{{trans('admin.new_product')}}",
                     "className": "btn btn-success buttons-print btn-success mr-1",
                     action : function ( e, dt, node, config ) {
-                        window.location.href = "{{route('sellers.create')}}";
+                        window.location.href = "{{route('products.create')}}";
                         }
                 },
                 // delete btn
-                @include('layouts.backEnd.includes.datatables._deleteBtn',['route'=>'sellers.destroy'])
+                @include('layouts.backEnd.includes.datatables._deleteBtn',['route'=>'products.destroy'])
 
                 // default btns
                 @include('layouts.backEnd.includes.datatables._datatableBtn')
             ],
-          ajax: "{{ route('sellers.index') }}",
+          ajax: "{{ route('products.index') }}",
           columns: [
               {data: 'check',               name: 'check', orderable: false, searchable: false},
               {data: 'DT_RowIndex',         name: 'DT_RowIndex', orderable: false, searchable: false},
-              {data: 'seller_name',         name: 'seller_name'},
-              {data: 'mobile',              name: 'mobile'},
-              {data: 'email',               name: 'email'},
-              {data: 'activition',          name: 'activition'},
+              {data: 'ar_product_name',     name: 'ar_product_name'},
+            //   {data: 'en_product_name',     name: 'en_product_name'},
+              {data: 'category_id',         name: 'category_id'},
+              {data: 'department_id',       name: 'department_id'},
+              {data: 'price',               name: 'price'},
               {data: 'action', 	            name: 'action', orderable: false, searchable: false},
           ],
           @include('layouts.backEnd.includes.datatables._datatableLang')

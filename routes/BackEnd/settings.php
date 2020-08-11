@@ -36,6 +36,7 @@ Route::group(['namespace'=>'BackEnd\Settings'],function(){
     Route::resource('/settings/departments','DepartmentController')->except('show','destroy');
     Route::post('departments/destroy','DepartmentController@destroy')->name('departments.destroy');
     Route::get('get/departments','DepartmentController@getDepartments')->name('get.departments');
+    Route::put('get/departments/id','DepartmentController@getDepartmentsById')->name('get.departments.id');
     Route::put('department/selected','DepartmentController@getDepartmentSelected')->name('department.selected');
 
     /**

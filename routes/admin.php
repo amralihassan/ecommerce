@@ -73,6 +73,11 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
                 Route::post('sellers/destroy','SellerController@destroy')->name('sellers.destroy');
                 Route::get('get/sellers','SellerController@getSellers')->name('get.sellers');
                 Route::put('seller/selected','SellerController@getSellerSelected')->name('seller.selected');
+
+                // Product
+                Route::resource('/products','ProductController')->except('destroy');
+                Route::post('products/destroy','ProductController@destroy')->name('products.destroy');
+
             });
         });
 });

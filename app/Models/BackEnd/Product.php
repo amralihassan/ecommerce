@@ -19,6 +19,7 @@ class Product extends Model
         'discount_price',
         'item_condition',
         'note',
+        'product_image',
         'admin_id'
     ];
     public function admin()
@@ -32,6 +33,10 @@ class Product extends Model
     public function department()
     {
         return $this->belongsTo('App\Models\BackEnd\Settings\Department','department_id');
+    }
+    public function country()
+    {
+        return $this->belongsTo('App\Models\BackEnd\Settings\Country','country_id');
     }
     public function seller()
     {

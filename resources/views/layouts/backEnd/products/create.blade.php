@@ -20,7 +20,7 @@
       <div class="card">
         <div class="card-content collapse show">
           <div class="card-body">
-            <form class="form form-horizontal" method="POST" action="{{route('products.store')}}" id="add_name">
+            <form class="form form-horizontal" method="POST" action="{{route('products.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-body">
                     <h4 class="form-section"> {{ $title }}</h4>
@@ -142,6 +142,16 @@
                             <div class="col-md-9">
                                 <textarea name="note" class="form-control cols="30" rows="2">{{old('note')}}</textarea>
                             </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-md-3 label-control" >{{ trans('admin.product_image') }}</label>
+                              <div class="col-md-9">
+                                <input  type="file" name="product_image"/>
+                              </div>
                             </div>
                         </div>
                     </div>

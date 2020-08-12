@@ -59,3 +59,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     width: 150px !important;
     padding-bottom: 5px!important;
 }
+.card-border
+{
+    border:1px solid #f2f2f2;
+}

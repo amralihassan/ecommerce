@@ -4,20 +4,18 @@
     <div class="col-5 col-xs-12 product-inside">
     <h4 style="padding-right: 17px">{{$product->ar_product_name}}</h4>
         <figure class="col-lg-12 col-md-6 col-12" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-            <a href="{{asset('cpanel/app-assets/images/gallery/8.jpg')}}" itemprop="contentUrl" data-size="480x360">
-              <img class="img-thumbnail img-fluid" src="{{asset('cpanel/app-assets/images/gallery/8.jpg')}}"
+            <a href="{{asset('images/product_images/'.$product->product_image)}}" itemprop="contentUrl" data-size="480x360">
+              <img class="img-thumbnail img-fluid" src="{{asset('images/product_images/'.$product->product_image)}}"
               itemprop="thumbnail" alt="Image description" />
             </a>
           </figure>
+
+
     </div>
     <div class="col-4 col-xs-12 product-inside">
         <h3><strong>{{$product->price}} جنيه</strong></h3>
         <h6>{{ trans('admin.tax_note') }} <a href="#">{{ trans('admin.details') }}</a></h6>
-        <ul>
-            @foreach ($product->productSpecifications as $item)
-                <li>{{$item->definition->ar_value}}</li>
-            @endforeach
-        </ul>
+        <p>{{$product->ar_description}}</p>
 
     </div>
     <div class="col-3 col-xs-12 product-inside">
@@ -64,4 +62,44 @@
     </div>
 
   </div>
+@endsection
+@section('script')
+<script>
+    $(document).ready(function(){
+      // Activate Carousel
+      $("#myCarousel").carousel("pause");
+
+      // Go to the second item
+      $("#myBtn").click(function(){
+        $("#myCarousel").carousel(1);
+      });
+
+      // Go to the third item
+      $("#myBtn2").click(function(){
+        $("#myCarousel").carousel(2);
+      });
+
+      // Enable Carousel Indicators
+      $(".item1").click(function(){
+        $("#myCarousel").carousel(0);
+      });
+      $(".item2").click(function(){
+        $("#myCarousel").carousel(1);
+      });
+      $(".item3").click(function(){
+        $("#myCarousel").carousel(2);
+      });
+      $(".item4").click(function(){
+        $("#myCarousel").carousel(3);
+      });
+
+      // Enable Carousel Controls
+      $(".left").click(function(){
+        $("#myCarousel").carousel("prev");
+      });
+      $(".right").click(function(){
+        $("#myCarousel").carousel("next");
+      });
+    });
+    </script>
 @endsection

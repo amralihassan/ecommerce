@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\BackEnd;
 use App\Http\Controllers\Controller;
-
+use File;
 use App\Models\BackEnd\Product;
 use Illuminate\Http\Request;
 
@@ -87,7 +87,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->user()->products()->create($request->only($this->attributes()));
+        $request->user()->products()->create($request->only($this->attributes())
+        + ['product_image'=>$this->uploadProductImage()]);
         alert()->success(trans('msg.stored_successfully'), trans('admin.new_product'));
         return redirect()->route('products.index');
     }
@@ -112,11 +113,39 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update($request->only($this->attributes()));
+        $product->update($request->only($this->attributes())
+        + ['product_image'=>$this->uploadProductImage($product)]);
         alert()->success(trans('msg.updated_successfully'), trans('admin.edit_product'));
         return redirect()->route('products.index');
     }
+    private function uploadProductImage(Product $product = null)
+    {
+        $fileName = '';
 
+        $productImageName = !empty($product) ? $product : '';
+
+
+        if (request()->hasFile('product_image'))
+        {
+            if (!empty($productImageName)) {
+                            // remove old image
+                $image_path = public_path("/images/product_images/".$productImageName->product_image);
+                // return dd($image_path);
+                if(File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+
+            $product_image = request('product_image');
+            $fileName = time().'-'.$product_image->getClientOriginalName();
+
+            $location = public_path('images/product_images');
+
+            $product_image->move($location,$fileName);
+            $data['product_image'] = $fileName;
+        }
+        return empty($fileName) ? $productImageName->product_image : $fileName ;
+    }
     /**
      * Remove the specified resource from storage.
      *

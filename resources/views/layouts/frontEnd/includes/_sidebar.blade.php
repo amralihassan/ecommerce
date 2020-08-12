@@ -33,7 +33,7 @@
             <ul class="menu-content">
                 @foreach ($category->departments as $department)
                     <li>
-                        <a class="menu-item" href="{{route('all.product')}}" data-i18n="nav.dash.ecommerce">{{$department->ar_department_name}}</a>
+                        <a class="menu-item" href="{{route('all.products',$department->id)}}" data-i18n="nav.dash.ecommerce">{{$department->ar_department_name}}</a>
                     </li>
                 @endforeach
             </ul>

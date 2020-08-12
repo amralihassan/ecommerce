@@ -65,7 +65,7 @@
                           <label class="col-md-3 label-control">{{ trans('admin.keywords') }}</label>
                           <div class="col-md-9">
                             <input type="text" class="form-control " value="{{old('keywords')}}" placeholder="{{ trans('admin.keywords') }}"
-                              name="keywords" ">
+                              name="keywords">
                           </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                           <label class="col-md-3 label-control">{{ trans('admin.sort') }}</label>
                           <div class="col-md-9">
                             <input type="number" min="0" class="form-control " value="{{old('sort')}}" placeholder="{{ trans('admin.sort') }}"
-                              name="sort" ">
+                              name="sort">
                           </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             <input  type="file" name="department_image"/>
                           </div>
                         </div>
-                      </div>
+                    </div>
                 </div>
                 <div class="form-actions left">
                     <button type="submit" class="btn btn-success">

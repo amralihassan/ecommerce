@@ -4,7 +4,7 @@
       <li class="nav-item">
         <a class="navbar-brand" href="index.html">
         <img class="brand-logo" alt="modern admin logo" src="{{asset('cpanel/app-assets/images/logo/logo.png')}}">
-          <h3 class="brand-text">اونلاين شوب</h3>
+          <h3 class="brand-text">{{session('lang')=='ar' || session('lang') == trans('admin.ar') ? settingHelper()->siteNameArabic :settingHelper()->siteNameEnglish}}</h3>
         </a>
       </li>
       <li class="nav-item d-md-none">

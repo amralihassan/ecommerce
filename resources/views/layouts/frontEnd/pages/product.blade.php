@@ -13,7 +13,7 @@
 
     </div>
     <div class="col-4 col-xs-12 product-inside">
-        <h3><strong>{{$product->price}} جنيه</strong></h3>
+        <h3><strong>{{$product->price}} {{$product->country->currency}}</strong></h3>
         <h6>{{ trans('admin.tax_note') }} <a href="#">{{ trans('admin.details') }}</a></h6>
         <p>{{$product->ar_description}}</p>
 

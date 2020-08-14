@@ -1,4 +1,4 @@
-<div class="main-menu menu-fixed menu-light menu-accordion menu-shadow menu-border"
+<div class="main-menu menu-dark menu-fixed menu-light menu-accordion menu-shadow menu-border"
     data-scroll-to-active="true">
     <div class="main-menu-content">
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
@@ -12,7 +12,6 @@
             <span class="menu-title" data-i18n="">{{ trans('admin.myPurchases') }}</span>
             </a>
         </li>
-
         <li class=" nav-item">
             <a href="email-application.html">
             <span class="menu-title" data-i18n="">{{ trans('admin.customersService') }}</span>

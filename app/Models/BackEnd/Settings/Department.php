@@ -25,6 +25,10 @@ class Department extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function products()
+    {
+        return $this->hasMany('App\Models\BackEnd\Product','department_id');
+    }
     public function getShowAttribute()
     {
         return $this->attributes['show'] == 'yes' ? trans('admin.yes') : trans('admin.no');

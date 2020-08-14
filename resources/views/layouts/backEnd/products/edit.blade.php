@@ -140,6 +140,17 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
+                              <label class="col-md-3 label-control">{{ trans('admin.brand') }}</label>
+                              <div class="col-md-9">
+                                <input type="text"  class="form-control " value="{{$product->brand}}" placeholder="{{ trans('admin.brand') }}"
+                                  name="brand">
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
                               <label class="col-md-3 label-control" >{{ trans('admin.product_image') }}</label>
                               <div class="col-md-9">
                                 <input  type="file" name="product_image"/>

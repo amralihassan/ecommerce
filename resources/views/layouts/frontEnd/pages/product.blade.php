@@ -1,19 +1,51 @@
 @extends('layouts.frontEnd.site')
 @section('content')
-<div class="row product-continer product-continer-top">
+<div class="content-header row">
+    <div class="content-header-left col-md-12 col-12 mt-1">
+      {{-- <h3 class="content-header-title">{{$title}}</h3> --}}
+      <div class="row breadcrumbs-top">
+        <div class="breadcrumb-wrapper col-12">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">{{ trans('admin.dashboard') }}</a></li>
+            <li class="breadcrumb-item">
+                <a href="{{route('all.products',$product->department->id)}}">
+                    @if (session('lang') =='ar')
+                        {{$product->department->ar_department_name}}
+                    @else
+                        {{$product->department->en_department_name}}
+                    @endif
+                </a>
+            </li>
+            <li class="breadcrumb-item active">
+                @if (session('lang') =='ar')
+                    {{$product->ar_product_name}}
+                @else
+                    {{$product->en_product_name}}
+                @endif
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row product-continer product-continer-top mt-2">
     <div class="col-5 col-xs-12 product-inside">
-    <h4 style="padding-right: 17px">{{$product->ar_product_name}}</h4>
         <figure class="col-lg-12 col-md-6 col-12" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
             <a href="{{asset('images/product_images/'.$product->product_image)}}" itemprop="contentUrl" data-size="480x360">
               <img class="img-thumbnail img-fluid" src="{{asset('images/product_images/'.$product->product_image)}}"
               itemprop="thumbnail" alt="Image description" />
             </a>
           </figure>
-
-
     </div>
     <div class="col-4 col-xs-12 product-inside">
-        <h3><strong>{{$product->price}} {{$product->country->currency}}</strong></h3>
+        <h4 class="red">
+            @if (session('lang') =='ar')
+                {{$product->ar_product_name}}
+            @else
+                {{$product->en_product_name}}
+            @endif
+        </h4>
+        <h3 class="blue mt-2 mb-2"><strong>{{$product->price}} {{$product->country->currency}}</strong></h3>
         <h6>{{ trans('admin.tax_note') }} <a href="#">{{ trans('admin.details') }}</a></h6>
         <p>{{$product->ar_description}}</p>
 
@@ -62,44 +94,4 @@
     </div>
 
   </div>
-@endsection
-@section('script')
-<script>
-    $(document).ready(function(){
-      // Activate Carousel
-      $("#myCarousel").carousel("pause");
-
-      // Go to the second item
-      $("#myBtn").click(function(){
-        $("#myCarousel").carousel(1);
-      });
-
-      // Go to the third item
-      $("#myBtn2").click(function(){
-        $("#myCarousel").carousel(2);
-      });
-
-      // Enable Carousel Indicators
-      $(".item1").click(function(){
-        $("#myCarousel").carousel(0);
-      });
-      $(".item2").click(function(){
-        $("#myCarousel").carousel(1);
-      });
-      $(".item3").click(function(){
-        $("#myCarousel").carousel(2);
-      });
-      $(".item4").click(function(){
-        $("#myCarousel").carousel(3);
-      });
-
-      // Enable Carousel Controls
-      $(".left").click(function(){
-        $("#myCarousel").carousel("prev");
-      });
-      $(".right").click(function(){
-        $("#myCarousel").carousel("next");
-      });
-    });
-    </script>
 @endsection

@@ -63,3 +63,11 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 {
     border:1px solid #f2f2f2;
 }
+.center{
+    text-align: center;
+}
+.up{
+    text-transform: uppercase;
+    font-weight: bold;
+    color:#ad2635;
+}

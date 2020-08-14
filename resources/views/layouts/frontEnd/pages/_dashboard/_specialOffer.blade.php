@@ -1,6 +1,6 @@
 @if (count($offers) > 0)
 <div class="row">
-    <div class="col-12 mt-3">
+    <div class="col-12 mt-2">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
             <div class="carousel-inner" role="listbox">

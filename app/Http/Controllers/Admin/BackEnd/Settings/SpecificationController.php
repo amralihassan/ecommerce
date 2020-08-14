@@ -45,7 +45,7 @@ class SpecificationController extends Controller
      */
     public function create()
     {
-        return view('layouts.backEnd.settings.specifications.create',['title'=>trans('admin.new_country')]);
+        return view('layouts.backEnd.settings.specifications.create',['title'=>trans('admin.new_specification')]);
     }
     private function attributes()
     {

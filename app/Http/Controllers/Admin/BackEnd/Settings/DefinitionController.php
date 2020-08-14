@@ -16,7 +16,7 @@ class DefinitionController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $data = Definition::with('department','specification')->get();
+            $data = Definition::with('department','specification')->orderBy('id','desc')->get();
             return datatables($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
@@ -52,6 +52,7 @@ class DefinitionController extends Controller
             'en_value',
             'specification_id',
             'department_id',
+            'sort',
             'admin_id'
         ];
     }

@@ -11,6 +11,7 @@ class Definition extends Model
         'en_value',
         'specification_id',
         'department_id',
+        'sort',
         'admin_id'
     ];
     public function admin()
@@ -24,6 +25,10 @@ class Definition extends Model
     public function specification()
     {
         return $this->belongsTo(Specification::class);
+    }
+    public function productSpecifications()
+    {
+        return $this->hasMany('App\Models\BackEnd\ProductSpecifications','definition_id');
     }
 
 }

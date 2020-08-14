@@ -73,6 +73,7 @@ class ProductController extends Controller
             'seller_id',
             'category_id',
             'price',
+            'brand',
             'discount_price',
             'item_condition',
             'note',

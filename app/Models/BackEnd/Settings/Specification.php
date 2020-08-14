@@ -16,4 +16,12 @@ class Specification extends Model
     {
         return $this->belongsTo(App\Models\Admin::class);
     }
+    public function definitions()
+    {
+        return $this->hasMany('App\Models\BackEnd\Settings\Definition','specification_id');
+    }
+    public function productSpecifications()
+    {
+        return $this->hasMany('App\Models\BackEnd\ProductSpecifications','specification_id');
+    }
 }

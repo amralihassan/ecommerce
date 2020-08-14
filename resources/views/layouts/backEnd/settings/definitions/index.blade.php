@@ -38,6 +38,7 @@
                                 <th>{{trans('admin.specification')}}</th>
                                 <th>{{trans('admin.ar_value')}}</th>
                                 <th>{{trans('admin.en_value')}}</th>
+                                <th>{{trans('admin.sort')}}</th>
                                 <th>{{trans('admin.edit')}}</th>
                             </tr>
                         </thead>
@@ -81,6 +82,7 @@
               {data: 'specification_id',    name: 'specification_id'},
               {data: 'ar_value',            name: 'ar_value'},
               {data: 'en_value',            name: 'en_value'},
+              {data: 'sort',                name: 'sort'},
               {data: 'action', 	            name: 'action', orderable: false, searchable: false},
           ],
           @include('layouts.backEnd.includes.datatables._datatableLang')

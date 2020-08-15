@@ -62,7 +62,7 @@
             buttons: [
                 // new btn
                 {
-                    "text": "{{trans('admin.new_country')}}",
+                    "text": "{{trans('admin.new_category')}}",
                     "className": "btn btn-success buttons-print btn-success mr-1",
                     action : function ( e, dt, node, config ) {
                         window.location.href = "{{route('categories.create')}}";

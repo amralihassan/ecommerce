@@ -77,7 +77,7 @@
                 @if (count($products) > 0)
                     @foreach ($products as $product)
                         <div class="col-xl-4 col-md-6 col-sm-4" >
-                            <div class="" style="min-height: 370px; margin: 10px;">
+                            <div class="all-products-item">
                                 <a href="{{route('product',$product->id)}}">
                                     <img class="card-img-top img-fluid" src="{{asset('images/product_images/'.$product->product_image)}}">
                                 </a>
@@ -85,6 +85,9 @@
                                     <p style="min-height: 80px" class="card-text">{{$product->ar_product_name}}</p>
                                     <h4 class="center up">{{$product->brand}}</h4>
                                     <h3 class="blue center up"><strong>{{$product->price}} {{$product->country->currency}}</strong></h3>
+                                </div>
+                                <div class="center">
+                                    <button class="btn btn-warning btn-md mb-1 btn-add-cart">{{ trans('admin.add_card') }}</button>
                                 </div>
                             </div>
                         </div>

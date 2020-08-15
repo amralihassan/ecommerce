@@ -60,6 +60,7 @@ class CategoryController extends Controller
             'en_category_name',
             'description',
             'sort',
+            'show',
             'keywords',
             'admin_id'
         ];

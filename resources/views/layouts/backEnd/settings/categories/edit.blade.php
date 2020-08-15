@@ -63,6 +63,18 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
+                          <label class="col-md-3 label-control" >{{ trans('admin.display_in_site') }}</label>
+                          <div class="col-md-9">
+                            <select name="show" class="form-control">
+                                <option>{{ trans('admin.select') }}</option>
+                                <option {{ ($category->show == trans('admin.yes'))?'selected':''}} value="yes">{{ trans('admin.yes') }}</option>
+                                <option {{ ($category->show == trans('admin.no'))?'selected':''}} value="no">{{ trans('admin.no') }}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
                           <label class="col-md-3 label-control">{{ trans('admin.sort') }}</label>
                           <div class="col-md-9">
                             <input type="number" min="0" class="form-control " value="{{$category->sort}}" placeholder="{{ trans('admin.sort') }}"

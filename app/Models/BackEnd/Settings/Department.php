@@ -33,4 +33,8 @@ class Department extends Model
     {
         return $this->attributes['show'] == 'yes' ? trans('admin.yes') : trans('admin.no');
     }
+    public function scopeShow($query)
+    {
+        return $query->where('show','yes');
+    }
 }

@@ -10,6 +10,7 @@ class Category extends Model
         'en_category_name',
         'icon',
         'sort',
+        'show',
         'description',
         'keywords',
         'admin_id'
@@ -20,6 +21,10 @@ class Category extends Model
     }
     public function departments()
     {
-        return $this->hasMany(Department::class,'category_id');
+        return $this->hasMany(Department::class,'category_id')->orderBy('sort','asc')->show();
+    }
+    public function getShowAttribute()
+    {
+        return $this->attributes['show'] == 'yes' ? trans('admin.yes') : trans('admin.no');
     }
 }

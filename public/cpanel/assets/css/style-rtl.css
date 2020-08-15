@@ -71,3 +71,19 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     font-weight: bold;
     color:#ad2635;
 }
+.product-dash-image{
+    width: 250pc; height: 250px;
+}
+.all-products-item{
+    min-height: 370px; margin: 10px;
+}
+.all-products-item:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.btn-add-cart{
+    visibility: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.all-products-item:hover >.center >.btn-add-cart{
+    visibility:visible
+}

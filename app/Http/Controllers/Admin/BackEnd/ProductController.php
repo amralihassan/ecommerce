@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\BackEnd;
 use App\Http\Controllers\Controller;
+use App\Models\BackEnd\Cart;
 use File;
 use App\Models\BackEnd\Product;
 use Illuminate\Http\Request;

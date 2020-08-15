@@ -87,7 +87,7 @@
                                     <h3 class="blue center up"><strong>{{$product->price}} {{$product->country->currency}}</strong></h3>
                                 </div>
                                 <div class="center">
-                                    <button class="btn btn-warning btn-md mb-1 btn-add-cart">{{ trans('admin.add_card') }}</button>
+                                    <a href="{{route('cart.add',$product->id)}}" class="btn btn-warning btn-md mb-1 btn-add-cart">{{ trans('admin.add_cart') }}</a>
                                 </div>
                             </div>
                         </div>

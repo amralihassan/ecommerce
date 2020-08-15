@@ -1,5 +1,8 @@
 <?php
-    Route::group(['namespace'=>'BackEnd'],function(){
+
+use App\Http\Controllers\Admin\BackEnd\ProductController;
+
+Route::group(['namespace'=>'BackEnd'],function(){
         // Offer
         Route::resource('/offers','OfferController')->except('show');
         // Seller
@@ -11,6 +14,7 @@
         // Product
         Route::resource('/products','ProductController')->except('destroy');
         Route::post('products/destroy','ProductController@destroy')->name('products.destroy');
+        
 
         // Product Specifications
         Route::resource('/productSpecifications','ProductSpecificationsController')->except('index','create','destroy','show');

@@ -5,7 +5,7 @@
                 <span class="user-name text-bold-700">{{userInfo()->name}}</span>
             </span>
         </a>
-        @endauth
+    @endauth
   @guest
   <a class="nav-link dropdown-user-link" href="{{route('users.signIn')}}">
       <span class="mr-1">

@@ -29,7 +29,7 @@ if (!function_exists('authInfo')) {
 if (!function_exists('userInfo')) {
 	function userInfo()
 	{
-		if (adminAuth()->check()) {
+		if (auth()->guard('web')->check()) {
 			$id = auth()->guard('web')->user()->id;
 			$userInfo = \App\Models\User::where('id',$id)->first();
 			return $userInfo;

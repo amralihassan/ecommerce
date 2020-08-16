@@ -23,7 +23,12 @@ class UserController extends Controller
     {
         User::create($request->all());
 
-        if ($this->doLogin()) {
+        $credential = [
+            'email'                 => $request->get('email'),
+            'password'              => $request->get('password'),
+        ];
+
+        if ($this->doLogin( $credential)) {
             return redirect()->route('home');
         }
         return back();
@@ -46,7 +51,7 @@ class UserController extends Controller
     public function login()
     {
         $credential = $this->validate(request(),$this->rules(),$this->messages());
-        
+
         if ($this->doLogin($credential)) {
             return redirect()->route('home');
         }

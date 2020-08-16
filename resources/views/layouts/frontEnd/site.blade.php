@@ -32,10 +32,11 @@ data-open="click" data-menu="vertical-overlay-menu" data-col="2-columns">
       </div>
     </div>
   </div>
+  @include('sweetalert::alert')
   {{-- footer --}}
   @include('layouts.frontEnd.includes._footer')
 
   @include('layouts.frontEnd.includes._scripts')
- @yield('script')
+  @yield('script')
 </body>
 </html>

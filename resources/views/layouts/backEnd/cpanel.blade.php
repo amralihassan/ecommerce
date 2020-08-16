@@ -16,6 +16,7 @@
   rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
   @yield('styles')
+
   @if (session('lang') == trans('admin.ar') || session('lang') == 'ar'))
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/vendors.css')}}">
   <!-- END VENDOR CSS-->
@@ -106,7 +107,6 @@ data-open="click" data-menu="vertical-menu" data-col="2-columns">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
 {{-- message alerts --}}
-@include('sweet::alert')
-
+@include('sweet::alert2')
 </body>
 </html>

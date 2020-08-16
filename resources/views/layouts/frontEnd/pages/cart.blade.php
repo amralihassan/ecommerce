@@ -15,7 +15,7 @@
     </div>
 </div>
 <div class="row mt-2">
-    <div class="col-md-9">
+    <div class="col-md-8">
         @if(session()->has('cart'))
             @foreach ($cart->items as $product)
                 <div class="card">
@@ -46,14 +46,15 @@
             <h3 class="red">{{ trans('admin.empty_car') }}</h3>
         @endif
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="card">
             <div class="col-md-12">
                 <h6 class="mt-1"><strong>{{ trans('admin.total') }}</strong></h6>
                 <h2 class="mt-1"><strong>{{ $cart->totalPrice }} جنيه</strong></h2>
                 <hr>
                 <div class="mb-1 center">
-                    <a href="{{route('home')}}" class="btn btn-success">{{ trans('admin.continue_shopping') }}</a>
+                    <a style="display: inline-block" href="{{route('home')}}" class="btn btn-info">{{ trans('admin.continue_shopping') }}</a>
+                    <a style="display: inline-block" href="{{route('cart.checkout',$cart->totalPrice)}}" class="btn btn-success">{{ trans('admin.buy') }}</a>
                 </div>
             </div>
         </div>

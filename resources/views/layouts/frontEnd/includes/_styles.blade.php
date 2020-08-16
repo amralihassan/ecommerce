@@ -3,7 +3,7 @@ rel="stylesheet">
 <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
 rel="stylesheet">
 <!-- BEGIN VENDOR CSS-->
-
+@yield('styles')
 <!-- END VENDOR CSS-->
 <!-- BEGIN MODERN CSS-->
 @if (session('lang') == trans('admin.ar') || session('lang') == 'ar')

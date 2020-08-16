@@ -42,7 +42,7 @@
                           <label class="col-md-3 label-control" for="userinput1">{{ trans('admin.account_name') }}</label>
                           <div class="col-md-9">
                             <input type="text" id="userinput1" class="form-control border-primary" value="{{old('name')}}" placeholder="{{ trans('admin.account_name') }}"
-                              name="name" ">
+                              name="name">
                           </div>
                         </div>
                       </div>

@@ -52,7 +52,7 @@
     </div>
     <div class="col-3 col-xs-12 product-inside">
         <p class="product-ship-tip">{{$product->note}}</p>
-        <button type="button" class="btn btn-dark round btn-min-width mr-1 mb-1">{{ trans('admin.add_card') }}</button>
+        <a href="{{route('cart.add',$product->id)}}"  class="btn btn-dark round btn-min-width mr-1 mb-1">{{ trans('admin.add_cart') }}</a>
         <hr>
         <h6><strong>حالة السلعة :</strong> {{$product->item_condition}}</h6>
         <h6><strong>البائع :</strong> {{$product->seller->seller_name}}</h6>

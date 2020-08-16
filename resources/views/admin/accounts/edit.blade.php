@@ -10,7 +10,7 @@
         <div class="breadcrumb-wrapper col-12">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{aurl('dashboard')}}">{{ trans('admin.dashboard') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{route('accounts.index')}}">{{ trans('admin.users_accounts') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{route('accounts.index')}}">{{ trans('admin.admin_accounts') }}</a></li>
             <li class="breadcrumb-item active">{{$title}}
             </li>
           </ol>

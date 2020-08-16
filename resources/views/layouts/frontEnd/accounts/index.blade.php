@@ -30,18 +30,15 @@
         <div class="card-content collapse show">
           <div class="card-body card-dashboard">
               <div class="table-responsive">
-                  <form action="{{route('accounts.destroy')}}" id='formData' method="post">
+                  <form action="{{route('users.destroy')}}" id='formData' method="post">
                     @csrf
                     <table id="dynamic-table" class="table data-table" >
                         <thead class="bg-info white">
                             <tr>
                                 <th><input type="checkbox" class="ace" /></th>
                                 <th>#</th>
-                                <th>{{trans('admin.account_name')}}</th>
-                                <th>{{trans('admin.username')}}</th>
+                                <th>{{trans('admin.customer_name')}}</th>
                                 <th>{{trans('admin.email')}}</th>
-                                <th>{{trans('admin.account_status')}}</th>
-                                <th>{{trans('admin.edit')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,29 +59,18 @@
         @include('layouts.backEnd.includes.datatables._datatableConfig')
             dom: 'Bfrtip',
             buttons: [
-                // new btn
-                {
-                    "text": "{{trans('admin.new_admin_account')}}",
-                    "className": "btn btn-success buttons-print btn-success mr-1",
-                    action : function ( e, dt, node, config ) {
-                        window.location.href = "{{route('accounts.create')}}";
-                        }
-                },
                 // delete btn
-                @include('layouts.backEnd.includes.datatables._deleteBtn',['route'=>'accounts.destroy'])
+                @include('layouts.backEnd.includes.datatables._deleteBtn',['route'=>'users.destroy'])
 
                 // default btns
                 @include('layouts.backEnd.includes.datatables._datatableBtn')
             ],
-          ajax: "{{ route('accounts.index') }}",
+          ajax: "{{ route('users.index') }}",
           columns: [
               {data: 'check',       name: 'check', orderable: false, searchable: false},
               {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
               {data: 'name',        name: 'name'},
-              {data: 'username',    name: 'username'},
               {data: 'email', 		name: 'email'},
-              {data: 'status', 	    name: 'status'},
-              {data: 'action', 	    name: 'action', orderable: false, searchable: false},
           ],
           @include('layouts.backEnd.includes.datatables._datatableLang')
       });

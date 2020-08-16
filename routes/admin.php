@@ -62,6 +62,10 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
             Route::get('/settings','SettingController@siteSettingPage')->name('site.settings');
             Route::post('update/settings','SettingController@updateSettings')->name('update.settings');
 
+            // admin
+            Route::get('/users','UserController@index')->name('users.index');
+            Route::post('users/destroy','UserController@destroy')->name('users.destroy');
+
             // settings
             require 'BackEnd/settings.php';
 

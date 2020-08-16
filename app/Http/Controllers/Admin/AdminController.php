@@ -36,7 +36,7 @@ class AdminController extends Controller
                     ->rawColumns(['action','check'])
                     ->make(true);
         }
-        return view('admin.accounts.index',['title'=>trans("admin.users_accounts")]);
+        return view('admin.accounts.index',['title'=>trans("admin.admin_accounts")]);
     }
 
     /**
@@ -46,7 +46,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.accounts.create',['title'=>trans('admin.new_account')]);
+        return view('admin.accounts.create',['title'=>trans('admin.new_admin_account')]);
     }
 
     /**
@@ -58,7 +58,8 @@ class AdminController extends Controller
     public function store(AdminRequest $request)
     {
         Admin::create($request->all());
-        alert()->success(trans('msg.stored_successfully'), trans('admin.new_account'));
+        // alert()->success(trans('msg.stored_successfully'), trans('admin.new_account'));
+        toast(trans('msg.stored_successfully'),'success');
         return redirect()->route('accounts.index');
     }
 
@@ -71,7 +72,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $admins = Admin::findOrFail($id);
-        return view('admin.accounts.edit',['title'=>trans('admin.edit_user_account'),'admins'=>$admins]);
+        return view('admin.accounts.edit',['title'=>trans('admin.edit_account'),'admins'=>$admins]);
     }
 
     /**
@@ -85,7 +86,7 @@ class AdminController extends Controller
     {
         $admin = Admin::findOrFail($id);
         $admin->update($request->except('_token','_method','/admin/admin/profile'));
-        alert()->success(trans('msg.updated_successfully'), trans('admin.edit_user_account'));
+        alert()->success(trans('msg.updated_successfully'), trans('admin.edit_account'));
         return redirect()->route('accounts.index');
     }
 

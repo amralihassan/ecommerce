@@ -36,24 +36,15 @@
             </li>
 
             <li class="dropdown dropdown-user nav-item">
-                @auth
-              <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                        <span class="mr-1">{{ trans('admin.hello') }},
-                            <span class="user-name text-bold-700">{{authInfo()->name}}</span>
-                        </span>
-                        <span class="avatar avatar-online">
-                            <img src="{{asset('/images/imagesProfile/'.authInfo()->imageProfile)}}" alt="avatar"><i></i>
-                        </span>
-
-                    </a>
-                    @endauth
-              @guest
-              <a class="nav-link dropdown-user-link" href="#">
-                  <span class="mr-1">
-                      <span class="user-name text-bold-700">{{trans('admin.login')}}</span>
+                <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                    <span class="mr-1">{{ trans('admin.hello') }},
+                        <span class="user-name text-bold-700">{{authInfo()->name}}</span>
                     </span>
+                    <span class="avatar avatar-online">
+                        <img src="{{asset('/images/imagesProfile/'.authInfo()->imageProfile)}}" alt="avatar"><i></i>
+                    </span>
+
                 </a>
-             @endguest
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="{{ route('site.settings') }}"><i class="ft-settings"></i>{{ trans('admin.settings') }}</a>
                 <a class="dropdown-item" href="{{route('user-profile')}}"><i class="ft-user"></i>{{ trans('admin.profile') }}</a>

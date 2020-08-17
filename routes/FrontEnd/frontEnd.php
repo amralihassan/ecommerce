@@ -10,7 +10,7 @@ Route::group(['namespace'=>'FrontEnd'],function(){
 
     Route::get('/addCart/{productId}','CartController@addToCart')->name('cart.add');
     Route::get('/shopping-cart','CartController@showCart')->name('cart.show');
-    Route::get('/checkout/{amount}','CartController@cartCheckout')->name('cart.checkout');
+    Route::get('/checkout/{amount}','CartController@cartCheckout')->name('cart.checkout')->middleware('user');
     Route::post('/charge','CartController@charge')->name('cart.charge');
 
     Route::get('/users/sign_in','UserController@signIn')->name('users.signIn');

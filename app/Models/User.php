@@ -41,4 +41,8 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function orders()
+    {
+        return $this->hasMany('App\Models\FrontEnd\Order','user_id')->latest();
+    }
 }

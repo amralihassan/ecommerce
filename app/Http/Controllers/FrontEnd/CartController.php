@@ -66,10 +66,15 @@ class CartController extends Controller
         $chargeId = $charge['id'];
 
         if ($chargeId) { // accept payment
+            // save orders
+            auth()->user()->orders()->create([
+                'cart' => serialize(session('cart'))
+            ]);
+
 
             session()->forget('cart');
             toast(trans('admin.success_purchases'),'success');
-            return redirect()->route('home');
+            return redirect()->route('user.orders');
         }else{
             return back();
         }

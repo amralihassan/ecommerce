@@ -10,13 +10,10 @@ Route::group(['namespace'=>'FrontEnd'],function(){
 
     Route::get('/addCart/{productId}','CartController@addToCart')->name('cart.add');
     Route::get('/shopping-cart','CartController@showCart')->name('cart.show');
-    Route::get('/checkout/{amount}','CartController@cartCheckout')->name('cart.checkout')->middleware('user');
     Route::post('/charge','CartController@charge')->name('cart.charge');
 
-    Route::get('/users/sign_in','UserController@signIn')->name('users.signIn');
-    Route::post('/users/login','UserController@login')->name('user.login');
-    Route::get('/users/sign_up','UserController@signUp')->name('users.signUp');
-    Route::post('/users/create','UserController@store')->name('users.store');
-    Route::get('/users/logout','UserController@logout')->name('user.logout');
-
+    /**
+     * all users
+     */
+    require 'userRoutes.php';
 });

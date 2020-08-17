@@ -8,8 +8,8 @@
             </a>
         </li>
         <li class=" nav-item">
-            <a href="email-application.html">
-            <span class="menu-title" data-i18n="">{{ trans('admin.myPurchases') }}</span>
+            <a href="{{route('user.orders')}}">
+            <span class="menu-title" data-i18n="">{{ trans('admin.profile') }}</span>
             </a>
         </li>
         <li class=" nav-item">

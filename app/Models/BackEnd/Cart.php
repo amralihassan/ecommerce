@@ -26,6 +26,7 @@ class Cart
     public function add($product)
     {
         $item = [
+            'id'                => $product->id,
             'item'              => session('lang') == 'ar' ? $product->ar_product_name :$product->en_product_name,
             'brand'             => $product->brand,
             'note'              => $product->note,
@@ -46,5 +47,14 @@ class Cart
         }
 
         $this->items[$product->id]['qty'] +=1;
+    }
+
+    public function remove($product_id)
+    {
+        if (array_key_exists($product_id,$this->items)) {
+            $this->totalQty -=$this->items[$product_id]['qty'];
+            $this->totalPrice -=$this->items[$product_id]['qty'] * $this->items[$product_id]['price'];
+            unset($this->items[$product_id]);
+        }
     }
 }

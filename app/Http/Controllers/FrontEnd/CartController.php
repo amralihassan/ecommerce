@@ -54,6 +54,7 @@ class CartController extends Controller
             'amount'    =>$amount,
             ]);
     }
+
     public function charge(Request $request)
     {
         $charge = Stripe::charges()->create([
@@ -71,7 +72,6 @@ class CartController extends Controller
                 'cart' => serialize(session('cart'))
             ]);
 
-
             session()->forget('cart');
             toast(trans('admin.success_purchases'),'success');
             return redirect()->route('user.orders');
@@ -79,6 +79,20 @@ class CartController extends Controller
             return back();
         }
 
+    }
+    public function remove($product_id)
+    {
+        $cart = new Cart(session('cart'));
+        $cart->remove($product_id);
+        
+        if ($cart->totalQty <= 0) {
+            session()->forget('cart');
+        }else{
+            session()->put('cart',$cart); // add $cart to session
+        }
+
+        toast(trans('admin.item_removed'),'success');
+        return redirect()->route('cart.show');
     }
 
 }

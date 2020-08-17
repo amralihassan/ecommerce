@@ -11,6 +11,7 @@ Route::group(['namespace'=>'FrontEnd'],function(){
     Route::get('/addCart/{productId}','CartController@addToCart')->name('cart.add');
     Route::get('/shopping-cart','CartController@showCart')->name('cart.show');
     Route::post('/charge','CartController@charge')->name('cart.charge');
+    Route::delete('/cart/remove/{product_id}','CartController@remove')->name('cart.remove');
 
     /**
      * all users

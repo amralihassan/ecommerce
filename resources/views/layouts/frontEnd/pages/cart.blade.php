@@ -33,7 +33,11 @@
                                 <input type="number" style="width: 70px; display:inline-block" min="1" id="qty" class="form-control" value="{{$product['qty']}}"></h6>
                             <hr>
                             <div class="mb-1">
-                                <a href="#"> {{ trans('admin.erase') }}</a>
+                            <form action="{{route('cart.remove',$product['id'])}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"><i class="la la-trash"></i></button>
+                                </form>
                             </div>
                         </div>
                     </div>

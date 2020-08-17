@@ -105,8 +105,8 @@ data-open="click" data-menu="vertical-menu" data-col="2-columns">
   <!-- BEGIN PAGE LEVEL JS-->
 
 {{-- sweet alert --}}
-{{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script> --}}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
 {{-- message alerts --}}
 </body>
 </html>

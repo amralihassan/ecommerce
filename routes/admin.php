@@ -1,8 +1,7 @@
 <?php
 Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
     // ========================================= CONFIGURATIONS ======================================
-        Config::set('auth.defaults.guard','admin');
-        Config::set('auth.defaults.passwords','users');
+
     // ========================================= END CONFIGURATIONS ==================================
     // ========================================= LOGIN ===============================================
         Route::get('/login','AdminAuth@login');
@@ -42,6 +41,9 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
         // ================================= LOGOUT ==============================================
 
     Route::group(['middleware'=>'admin'],function(){
+            Config::set('auth.defaults.guard','admin');
+            Config::set('auth.defaults.passwords','users');
+
             Route::any('/logout','AdminAuth@logout')->name('logout');
             Route::get('/','DashboardController@index');
 

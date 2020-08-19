@@ -68,9 +68,9 @@ class CartController extends Controller
 
         if ($chargeId) { // accept payment
             // // save orders
-            // auth()->user()->orders()->create([
-            //     'cart' => serialize(session('cart'))
-            // ]);
+            auth()->user()->orders()->create([
+                'cart' => serialize(session('cart'))
+            ]);
 
             session()->forget('cart');
             toast(trans('admin.success_purchases'),'success');

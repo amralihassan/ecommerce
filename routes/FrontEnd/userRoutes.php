@@ -6,7 +6,7 @@
     Route::get('/users/logout','UserController@logout')->name('user.logout');
 
     Route::group(['middleware'=>'user'],function(){
+        Config::set('auth.defaults.guard','web');
         Route::get('/checkout/{amount}','CartController@cartCheckout')->name('cart.checkout');
         Route::get('/user/orders','OrderController@index')->name('user.orders');
-
     });

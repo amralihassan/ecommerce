@@ -6,7 +6,7 @@ class Cart
 {
     public $items = [];
 
-    public $totalQty;
+    public $totalQty; // Total shopping cart
 
     public $totalPrice;
 
@@ -20,6 +20,7 @@ class Cart
             $this->totalPrice   = $cart->totalPrice;
             $this->created_at   = $cart->created_at;
         }else{
+            // set cart
             $this->items        = [];
             $this->totalQty     = 0;
             $this->totalPrice   = 0;
@@ -37,7 +38,7 @@ class Cart
             'discount_price'    => $product->discount_price,
             'item_condition'    => $product->item_condition,
             'price'             => $product->price,
-            'qty'               => $product->qty,
+            'qty'               => 0,  //The quantity purchased
             'image'             => $product->product_image,
         ];
 
@@ -49,10 +50,10 @@ class Cart
             $this->totalQty +=1;
             $this->totalPrice +=$product->price;
         }
-       
-        $this->created_at =\Carbon\Carbon::now();
 
         $this->items[$product->id]['qty'] +=1;
+
+        $this->created_at =\Carbon\Carbon::now();
     }
 
     public function remove($product_id)
@@ -69,5 +70,9 @@ class Cart
         $this->totalQty -=$this->items[$product_id]['qty'];
         $this->totalPrice -=$this->items[$product_id]['qty'] * $this->items[$product_id]['price'];
 
+        $this->items[$product_id]['qty'] = $qty;
+
+        $this->totalQty +=$qty;
+        $this->totalPrice +=$qty* $this->items[$product_id]['price'];
     }
 }

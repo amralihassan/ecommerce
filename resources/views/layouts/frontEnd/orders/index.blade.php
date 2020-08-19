@@ -23,7 +23,6 @@
                 <a href="{{route('user.orders')}}" class="list-group-item {{request()->segment(2)=='orders'?'actsive':''}}">عناويني</a>
                 <a href="{{route('user.orders')}}" class="list-group-item {{request()->segment(2)=='orders'?'actsive':''}}">القوائم المفضلة</a>
                 <a href="{{route('user.orders')}}" class="list-group-item {{request()->segment(2)=='orders'?'actsive':''}}">إعدادات الحساب</a>
-
               </div>
             </div>
           </div>

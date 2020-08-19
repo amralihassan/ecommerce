@@ -1,6 +1,5 @@
 <?php
 
-
 Route::group(['namespace'=>'FrontEnd'],function(){
     Route::get('/','HomeController@index');
     Route::get('/home','HomeController@index')->name('home');
@@ -11,6 +10,7 @@ Route::group(['namespace'=>'FrontEnd'],function(){
     Route::get('/shopping-cart','CartController@showCart')->name('cart.show');
     Route::post('/charge','CartController@charge')->name('cart.charge');
     Route::delete('/cart/remove/{product_id}','CartController@remove')->name('cart.remove');
+    Route::put('/cart/update/{product_id}','CartController@updateQuantity')->name('cart.update');
 
     /**
      * all users

@@ -16,6 +16,14 @@
 </div>
 <div class="row mt-2">
     <div class="col-md-8">
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+            <!-- print all errors -->
+                <h4 class="red">
+                    {{$error}}
+                </h4>
+            @endforeach
+        @endif
         @if(session()->has('cart'))
             @foreach ($cart->items as $product)
                 <div class="card">
@@ -30,13 +38,18 @@
                             <h6 class="mt-1"><strong>{{ trans('admin.item_condition') }}</strong> : {{$product['item_condition']}}</h6>
                             <h6 class="mt-1"><strong>{{ trans('admin.note') }}</strong> : {{$product['note']}}</h6>
                             <h6 class="mt-1"><strong>{{ trans('admin.count') }}</strong> :
-                                <input type="number" style="width: 70px; display:inline-block" min="1" id="qty" class="form-control" value="{{$product['qty']}}"></h6>
-                            <hr>
+                                <form action="{{route('cart.update',[$product['id']])}}" method="post" class="formData" style="display: inline-block">
+                                    @csrf
+                                    @method('PUT')
+                                    <input style="width: 70px; display:inline" name="qty" class="form-control qty" value="{{$product['qty']}}">
+                                    <button type="submit" class="btn btn-default btn-sm"><i class="la la-refresh"></i></button>
+                                </form>
+                                <hr>
                             <div class="mb-1">
                             <form action="{{route('cart.remove',$product['id'])}}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"><i class="la la-trash"></i></button>
+                                    <button type="submit" id="qty" class="btn btn-danger"><i class="la la-trash"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -62,3 +75,4 @@
     </div>
 </div>
 @endsection
+

@@ -73,13 +73,16 @@ class CartController extends Controller
             ]);
 
             session()->forget('cart');
+
             toast(trans('admin.success_purchases'),'success');
+
             return redirect()->route('user.orders');
         }else{
             return back();
         }
 
     }
+
     public function remove($product_id)
     {
         $cart = new Cart(session('cart'));
@@ -92,6 +95,22 @@ class CartController extends Controller
         }
 
         toast(trans('admin.item_removed'),'success');
+
+        return redirect()->route('cart.show');
+    }
+
+    public function updateQuantity($product_id)
+    {
+        request()->validate([
+            'qty' => 'required|numeric|min:1'
+        ],[
+            'qty.required'  => trans('admin.qty_required'),
+            'qty.numeric'   => trans('admin.qty_numeric'),
+            'qty.min'       => trans('admin.qty_min'),
+        ]);
+        $cart = new Cart(session('cart'));
+        $cart->updateQuantity($product_id,request('qty'));
+        session()->put('cart',$cart);
         return redirect()->route('cart.show');
     }
 

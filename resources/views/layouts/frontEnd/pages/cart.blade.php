@@ -37,14 +37,15 @@
                             <h6 class="mt-1"><strong>{{ trans('admin.brand') }}</strong> : {{$product['brand']}}</h6>
                             <h6 class="mt-1"><strong>{{ trans('admin.item_condition') }}</strong> : {{$product['item_condition']}}</h6>
                             <h6 class="mt-1"><strong>{{ trans('admin.note') }}</strong> : {{$product['note']}}</h6>
-                            <h6 class="mt-1"><strong>{{ trans('admin.count') }}</strong> :
-                                <form action="{{route('cart.update',[$product['id']])}}" method="post" class="formData" style="display: inline-block">
-                                    @csrf
-                                    @method('PUT')
-                                    <input style="width: 70px; display:inline" name="qty" class="form-control qty" value="{{$product['qty']}}">
-                                    <button type="submit" class="btn btn-default btn-sm"><i class="la la-refresh"></i></button>
-                                </form>
-                                <hr>
+
+                            <form action="{{route('cart.update',[$product['id']])}}" method="post" class="formData" style="display: inline-block">
+                                @csrf
+                                @method('PUT')
+                                <h6 style="display: inline-block" class="mt-1"><strong>{{ trans('admin.count') }}</strong> :</h6>
+                                <input style="width: 70px; display:inline" name="qty" class="form-control qty" value="{{$product['qty']}}">
+                                <button type="submit" class="btn btn-default btn-sm"><i class="la la-refresh"></i></button>
+                            </form>
+                            <hr>
                             <div class="mb-1">
                             <form action="{{route('cart.remove',$product['id'])}}" method="post">
                                     @csrf

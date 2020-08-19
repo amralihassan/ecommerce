@@ -76,9 +76,8 @@
             },
             function(){
                 $("#formData").submit();
-                // swal("{{trans('msg.delete')}}", "{{trans('msg.delete_successfully')}}", "success");
         });
-        // $("#frm").submit();
+        
     });
 </script>
 @endsection

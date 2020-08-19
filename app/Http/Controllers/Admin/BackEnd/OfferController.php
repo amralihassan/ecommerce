@@ -37,8 +37,7 @@ class OfferController extends Controller
             'start_offer',
             'status_display',
             'start_display',
-            'end_display',
-            'admin_id'
+            'end_display'
         ];
     }
     /**

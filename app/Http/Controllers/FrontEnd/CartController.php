@@ -67,10 +67,10 @@ class CartController extends Controller
         $chargeId = $charge['id'];
 
         if ($chargeId) { // accept payment
-            // save orders
-            auth()->user()->orders()->create([
-                'cart' => serialize(session('cart'))
-            ]);
+            // // save orders
+            // auth()->user()->orders()->create([
+            //     'cart' => serialize(session('cart'))
+            // ]);
 
             session()->forget('cart');
             toast(trans('admin.success_purchases'),'success');
@@ -84,7 +84,7 @@ class CartController extends Controller
     {
         $cart = new Cart(session('cart'));
         $cart->remove($product_id);
-        
+
         if ($cart->totalQty <= 0) {
             session()->forget('cart');
         }else{

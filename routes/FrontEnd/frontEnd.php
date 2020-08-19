@@ -1,6 +1,5 @@
 <?php
-Config::set('auth.defaults.guard','web');
-Config::set('auth.defaults.passwords','users');
+
 
 Route::group(['namespace'=>'FrontEnd'],function(){
     Route::get('/','HomeController@index');

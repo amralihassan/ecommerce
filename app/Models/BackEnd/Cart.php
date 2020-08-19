@@ -57,4 +57,11 @@ class Cart
             unset($this->items[$product_id]);
         }
     }
+
+    public function updateQuantity($product_id,$qty)
+    {
+        $this->totalQty -=$this->items[$product_id]['qty'];
+        $this->totalPrice -=$this->items[$product_id]['qty'] * $this->items[$product_id]['price'];
+        
+    }
 }

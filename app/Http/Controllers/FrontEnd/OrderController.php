@@ -20,14 +20,16 @@ class OrderController extends Controller
         $purchases = $orders->transform(function($cart,$key){
             return unserialize($cart->cart);
         });
-
+        // dd($purchases);
         return view('layouts.frontEnd.orders.index',
         [
             'title'         => trans('admin.myPurchases'),
             'categories'    => $categories,
+            'orders'        => $orders,
             'purchases'     => $purchases
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

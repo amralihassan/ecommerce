@@ -6,11 +6,16 @@ use App\Models\BackEnd\Cart;
 use App\Models\BackEnd\Product;
 use App\Models\BackEnd\Settings\Category;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Config;
 use Illuminate\Http\Request;
 
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        Config::set('auth.defaults.guard','web');
+    }
     public function addToCart($product_id)
     {
         $product = Product::findOrFail($product_id);

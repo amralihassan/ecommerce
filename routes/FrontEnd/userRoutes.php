@@ -5,8 +5,7 @@
     Route::post('/users/create','UserController@store')->name('users.store');
     Route::get('/users/logout','UserController@logout')->name('user.logout');
 
-    Route::group(['middleware'=>'user'],function(){
-        //Config::set('auth.defaults.guard','web');
+    Route::group(['middleware'=>['web','user']],function(){
         Route::get('/checkout/{amount}','CartController@cartCheckout')->name('cart.checkout');
         Route::get('/user/orders','OrderController@index')->name('user.orders');
     });

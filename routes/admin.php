@@ -1,7 +1,8 @@
 <?php
-Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
     Config::set('auth.defaults.guard','admin');
     Config::set('auth.defaults.passwords','users');
+Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
+
     // ========================================= CONFIGURATIONS ======================================
 
     // ========================================= END CONFIGURATIONS ==================================
@@ -79,3 +80,5 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
 });
 // FrontEnd
 require 'FrontEnd/frontEnd.php';
+
+

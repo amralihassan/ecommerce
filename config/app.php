@@ -178,7 +178,9 @@ return [
 
         Yajra\DataTables\DataTablesServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
-        RealRashid\SweetAlert\SweetAlertServiceProvider::class
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*

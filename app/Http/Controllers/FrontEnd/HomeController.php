@@ -7,10 +7,15 @@ use App\Models\BackEnd\Product;
 use App\Models\BackEnd\Settings\Category;
 use App\Models\BackEnd\Settings\Definition;
 use App\Models\BackEnd\Settings\Specification;
+use Config;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        Config::set('auth.defaults.guard','web');
+    }
     public $departmentId ;
     public $categories ;
     public $specifications ;

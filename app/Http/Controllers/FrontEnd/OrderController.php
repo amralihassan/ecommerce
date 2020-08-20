@@ -4,10 +4,15 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Models\BackEnd\Settings\Category;
 use App\Models\FrontEnd\Order;
+use Config;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        Config::set('auth.defaults.guard','web');
+    }
     /**
      * Display a listing of the resource.
      *

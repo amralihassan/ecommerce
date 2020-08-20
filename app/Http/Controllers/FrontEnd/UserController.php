@@ -4,9 +4,14 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use Config;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        Config::set('auth.defaults.guard','web');
+    }
     public function signIn()
     {
         if (session()->has('user_login')) {

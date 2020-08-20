@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Config;
 use Illuminate\Support\Facades\Auth;
 class User
 {

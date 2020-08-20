@@ -41,22 +41,26 @@ class CartController extends Controller
             $cart = new Cart;
         }
         $categories = Category::with('departments')->orderBy('sort','asc')->get();
+        $products = Product::all();
         return view('layouts.frontEnd.pages.cart',
         [
             'title'         =>trans('admin.cart'),
             'cart'          =>$cart,
-            'categories'    =>$categories
+            'categories'    =>$categories,
+            'products'      =>$products
         ]);
     }
 
     public function cartCheckout($amount)
     {
         $categories = Category::with('departments')->orderBy('sort','asc')->get();
+        $products = Product::all();
         return view('layouts.frontEnd.pages.checkout',
         [
-            'title'     =>trans('admin.buy'),
-            'categories'=>$categories,
-            'amount'    =>$amount,
+            'title'         =>trans('admin.buy'),
+            'categories'    =>$categories,
+            'products'      =>$products,
+            'amount'        =>$amount,
             ]);
     }
 

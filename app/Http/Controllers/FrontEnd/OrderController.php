@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
+use App\Models\BackEnd\Product;
 use App\Models\BackEnd\Settings\Category;
 use App\Models\FrontEnd\Order;
 use Config;
@@ -22,6 +23,7 @@ class OrderController extends Controller
     {
         $categories = Category::with('departments')->orderBy('sort','asc')->get();
         $orders = auth()->user()->orders;
+        $products = Product::all();
         $purchases = $orders->transform(function($cart,$key){
             return unserialize($cart->cart);
         });
@@ -30,6 +32,7 @@ class OrderController extends Controller
         [
             'title'         => trans('admin.myPurchases'),
             'categories'    => $categories,
+            'products'      => $products,
             'orders'        => $orders,
             'purchases'     => $purchases
         ]);

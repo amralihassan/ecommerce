@@ -34,7 +34,9 @@ class HomeController extends Controller
     {
         $categories = $this->categories();
         $product = Product::with('category','department','productSpecifications')->where('id',$id)->first();
-        return view('layouts.frontEnd.pages.product',compact('categories','product'));
+        
+        $products = $this->products($product->department_id);
+        return view('layouts.frontEnd.pages.product',compact('categories','product','products'));
     }
     public function allProducts($department_id)
     {

@@ -16,9 +16,7 @@
                         @endif
                     </a>
                 @endif
-
             </li>
-
           </ol>
         </div>
       </div>
@@ -28,43 +26,47 @@
     <div class="col-3" >
         <div class="col-md-12 col-sm-12">
             <div style="min-height: 700px;">
-                <div class="form-group">
-                    <div class="seachbox mb-2">
-                      <input type="text" class="form-control round" placeholder="Search" id="input-search"
-                      name="input-search">
-                    </div>
-                  </div>
                   <div class="row mb-1">
-                    <div class="col-md-8 col-sm-12">
+                    <div class="col-md-12 col-sm-12">
+                        <form action="{{route('products.filter',$definitions[0]->department->id)}}" method="get" id="formProducts">
                         @foreach ($specifications as $specification)
-                            @if (session('lang') == 'ar')
-                                <label class="black">{{$specification->ar_specification_name}}</label><br>
-                                @foreach ($specification->definitions as $item)
-                                    @foreach ($definitions as $definition)
-                                        @if ($item->id == $definition->id)
-                                            <div class="form-group">
-                                                <label class="ml-1 mb-0">
-                                                    <input type="checkbox" id="chk-ignore-case" value="false"> {{$item->ar_value}}
-                                                </label>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                @endforeach
-                            @else
-                                <label class="black">{{$specification->en_specification_name}}</label>
-                                @foreach ($specification->definitions as $item)
-                                    @foreach ($definitions as $definition)
-                                        @if ($item->id == $definition->id)
-                                            <div class="form-group">
-                                                <label class="ml-1 mb-0">
-                                                    <input type="checkbox" id="chk-ignore-case" value="false"> {{$item->en_value}}
-                                                </label>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                @endforeach
-                            @endif
-                        @endforeach
+                        <h5>{{$specification->ar_specification_name}}</h5>
+                            {{-- <div id="basic-list"> --}}
+                                {{-- <input type="text" class="search form-control mb-1 mt-1" placeholder="{{$specification->ar_specification_name}}"/> --}}
+                                <ul class="list-group list ">
+                                    @if (session('lang') == 'ar')
+                                        @foreach ($specification->definitions as $item)
+                                                @foreach ($definitions as $definition)
+                                                        @if ($item->id == $definition->id)
+                                                            <li class="list-group-item product-list-group-item">
+                                                                <div class="form-group name filter">
+                                                                    <input type="checkbox"
+                                                                    {{session()->has('filter') ? in_array($item->ar_value,session('filter')) ? 'checked' : '' : ''}}
+                                                                    name="{{$definition->id}}" value="{{$item->ar_value}}"> {{$item->ar_value}}
+                                                                </div>
+                                                            </li>
+                                                        @endif
+                                                @endforeach
+                                        @endforeach
+                                    {{-- english lang --}}
+                                    @else
+                                        @foreach ($specification->definitions as $item)
+                                            @foreach ($definitions as $definition)
+                                                @if ($item->id == $definition->id)
+                                                    <li class="list-group-item product-list-group-item">
+                                                        <div class="form-group name">
+                                                            <input type="checkbox" id="chk-ignore-case" value="{{$item->en_value}}"> {{$item->en_value}}
+                                                        </div>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            {{-- </div> --}}
+                            <hr>
+                            @endforeach
+                        </form>
                     </div>
                   </div>
             </div>
@@ -102,5 +104,18 @@
         {{$products->links()}}
     </div>
 </div>
+
 @endsection
+@section('script')
+    <script>
+        // filter
+        $(".filter").change(function() {
+            // var data = $('#formProducts').serialize();
+            $('#formProducts').submit();
+        });
+    </script>
+    <script src="{{asset('cpanel/app-assets/vendors/js/extensions/listjs/list.min.js')}}"></script>
+    <script src="{{asset('cpanel/app-assets/js/scripts/extensions/list.js')}}"></script>
+@endsection
+
 

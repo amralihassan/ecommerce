@@ -27,4 +27,8 @@ class Category extends Model
     {
         return $this->attributes['show'] == 'yes' ? trans('admin.yes') : trans('admin.no');
     }
+    public function scopeSort($query)
+    {
+        return $query->orderBy('sort','asc');
+    }
 }

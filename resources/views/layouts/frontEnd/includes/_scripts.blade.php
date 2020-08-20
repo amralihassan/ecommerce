@@ -8,4 +8,4 @@
   <!-- BEGIN MODERN JS-->
   <script src="{{asset('cpanel/app-assets/js/core/app-menu.js')}}" type="text/javascript"></script>
   <script src="{{asset('cpanel/app-assets/js/core/app.js')}}" type="text/javascript"></script>
-  {{-- <script src="{{asset('cpanel/app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script> --}}
+   <script src="{{asset('cpanel/app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script>

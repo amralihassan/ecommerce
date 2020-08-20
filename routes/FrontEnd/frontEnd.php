@@ -12,6 +12,9 @@ Route::group(['namespace'=>'FrontEnd'],function(){
     Route::delete('/cart/remove/{product_id}','CartController@remove')->name('cart.remove');
     Route::put('/cart/update/{product_id}','CartController@updateQuantity')->name('cart.update');
 
+    // filter all products
+    Route::get('/all/products/filter/{department_id}','HomeController@filter')->name('products.filter');
+
     /**
      * all users
      */

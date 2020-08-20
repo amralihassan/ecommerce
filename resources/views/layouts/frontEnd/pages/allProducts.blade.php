@@ -18,8 +18,7 @@
                 @endif
 
             </li>
-            {{-- <li class="breadcrumb-item active">{{$title}} --}}
-            </li>
+
           </ol>
         </div>
       </div>

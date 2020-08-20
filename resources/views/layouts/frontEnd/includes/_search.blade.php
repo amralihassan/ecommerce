@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-md-12">
+
         <fieldset>
-            <form action="{{route('product.search',$products[0]->department->id)}}" method="get" id="formSearch">
+            <form action="{{route('product.search',$products->count() > 0 ?$products[0]->department->id : 0)}}" method="get" id="formSearch">
                 <div class="input-group">
                     <input type="text" class="form-control input-lg" placeholder="{{ trans('admin.search_product') }}"
                     aria-describedby="button-addon2" id="searchBox" name="searchBox">

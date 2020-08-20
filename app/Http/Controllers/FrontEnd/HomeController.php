@@ -42,6 +42,7 @@ class HomeController extends Controller
         $this->departmentId = $department_id;
         $this->prepareMainData($department_id);
         $products = $this->products($department_id);
+
         return view('layouts.frontEnd.pages.allProducts',[
             'categories'     => $this->categories,
             'products'       => $products,
@@ -114,6 +115,7 @@ class HomeController extends Controller
             foreach($data as $row)
             {
                 $search = session('lang') == 'ar' ? $row->ar_product_name : $row->en_product_name ;
+                $department_id = $row->department_id;
             $output .= '
                 <li><a href="#">'.$search.'</a></li>
                  ';
@@ -122,22 +124,40 @@ class HomeController extends Controller
             echo $output;
         }
     }
-    public function productSearch($department_id = null)
+    public function productSearch($department_id)
     {
-        $this->departmentId = $department_id;
-        $this->prepareMainData($department_id);
-
         $query = request('searchBox');
 
         $products = Product::where('en_product_name', 'LIKE', "%{$query}%")
         ->orWhere('ar_product_name', 'LIKE', "%{$query}%")
         ->paginate(15);
 
+
+        $this->categories = $this->categories();
+
+        $this->definitions = Definition::with('department')
+        ->whereHas('department',function($q){
+            $q->whereIn('department_id',$this->departmentRelatedSearch());
+        })->get();
+
+        $this->specifications = Specification::with('definitions','productSpecifications')
+        ->whereHas('definitions',function($q){
+            $q->whereIn('department_id',$this->departmentRelatedSearch());
+        })
+        ->sort()->get();
+
         return view('layouts.frontEnd.pages.allProducts',[
             'categories'     => $this->categories,
             'products'       => $products,
             'specifications' => $this->specifications,
             'definitions'    => $this->definitions]);
+    }
+    private function departmentRelatedSearch()
+    {
+        $query = request('searchBox');
+        return Product::where('en_product_name', 'LIKE', "%{$query}%")
+        ->orWhere('ar_product_name', 'LIKE', "%{$query}%")
+        ->select('department_id')->get();
     }
 
 }

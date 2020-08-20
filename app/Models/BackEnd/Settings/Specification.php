@@ -24,4 +24,8 @@ class Specification extends Model
     {
         return $this->hasMany('App\Models\BackEnd\ProductSpecifications','specification_id');
     }
+    public function scopeSort($q)
+    {
+        return $q->orderBy('sort','asc');
+    }
 }

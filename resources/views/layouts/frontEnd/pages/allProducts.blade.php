@@ -28,45 +28,50 @@
             <div style="min-height: 700px;">
                   <div class="row mb-1">
                     <div class="col-md-12 col-sm-12">
-                        <form action="{{route('products.filter',$definitions[0]->department->id)}}" method="get" id="formProducts">
-                        @foreach ($specifications as $specification)
-                        <h5>{{$specification->ar_specification_name}}</h5>
-                            {{-- <div id="basic-list"> --}}
-                                {{-- <input type="text" class="search form-control mb-1 mt-1" placeholder="{{$specification->ar_specification_name}}"/> --}}
-                                <ul class="list-group list ">
-                                    @if (session('lang') == 'ar')
-                                        @foreach ($specification->definitions as $item)
-                                                @foreach ($definitions as $definition)
-                                                        @if ($item->id == $definition->id)
-                                                            <li class="list-group-item product-list-group-item">
-                                                                <div class="form-group name filter">
-                                                                    <input type="checkbox"
-                                                                    {{session()->has('filter') ? in_array($item->ar_value,session('filter')) ? 'checked' : '' : ''}}
-                                                                    name="{{$definition->id}}" value="{{$item->ar_value}}"> {{$item->ar_value}}
-                                                                </div>
-                                                            </li>
-                                                        @endif
-                                                @endforeach
-                                        @endforeach
-                                    {{-- english lang --}}
-                                    @else
-                                        @foreach ($specification->definitions as $item)
-                                            @foreach ($definitions as $definition)
-                                                @if ($item->id == $definition->id)
-                                                    <li class="list-group-item product-list-group-item">
-                                                        <div class="form-group name">
-                                                            <input type="checkbox" id="chk-ignore-case" value="{{$item->en_value}}"> {{$item->en_value}}
-                                                        </div>
-                                                    </li>
-                                                @endif
+                        @if (count($definitions) > 0)
+                            <form action="{{route('products.filter',$definitions[0]->department->id)}}" method="get" id="formProducts">
+                                @foreach ($specifications as $specification)
+                                <h5>{{$specification->ar_specification_name}}</h5>
+                                {{-- <div id="basic-list"> --}}
+                                    {{-- <input type="text" class="search form-control mb-1 mt-1" placeholder="{{$specification->ar_specification_name}}"/> --}}
+                                    <ul class="list-group list ">
+                                        @if (session('lang') == 'ar')
+                                            @foreach ($specification->definitions as $item)
+                                                    @foreach ($definitions as $definition)
+                                                            @if ($item->id == $definition->id)
+                                                                <li class="list-group-item product-list-group-item">
+                                                                    <div class="form-group name filter">
+                                                                        <input type="checkbox"
+                                                                        {{session()->has('filter') ? in_array($item->ar_value,session('filter')) ? 'checked' : '' : ''}}
+                                                                        name="{{$definition->id}}" value="{{$item->ar_value}}"> {{$item->ar_value}}
+                                                                    </div>
+                                                                </li>
+                                                            @endif
+                                                    @endforeach
                                             @endforeach
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            {{-- </div> --}}
-                            <hr>
-                            @endforeach
-                        </form>
+                                        {{-- english lang --}}
+                                        @else
+                                            @foreach ($specification->definitions as $item)
+                                                @foreach ($definitions as $definition)
+                                                    @if ($item->id == $definition->id)
+                                                        <li class="list-group-item product-list-group-item">
+                                                            <div class="form-group name">
+                                                                <input type="checkbox" id="chk-ignore-case" value="{{$item->en_value}}"> {{$item->en_value}}
+                                                            </div>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            @endforeach
+                                        @endif
+                                    </ul>
+                                {{-- </div> --}}
+                                <hr>
+                                @endforeach
+                            </form>
+                        @else
+                            <h5 class="red">{{ trans('admin.no_departments') }}</h5>
+                        @endif
+
                     </div>
                   </div>
             </div>

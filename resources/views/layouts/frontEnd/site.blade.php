@@ -37,6 +37,8 @@ data-open="click" data-menu="vertical-overlay-menu" data-col="2-columns">
   @include('layouts.frontEnd.includes._footer')
 
   @include('layouts.frontEnd.includes._scripts')
+  @include('layouts.frontEnd.includes._autoCompleteSearch')
   @yield('script')
+
 </body>
 </html>

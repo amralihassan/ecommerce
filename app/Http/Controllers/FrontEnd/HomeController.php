@@ -27,7 +27,8 @@ class HomeController extends Controller
     {
         $offers = Offer::all();
         $categories = $this->categories();
-        return view('layouts.frontEnd.pages.dashboard',compact('offers','categories'));
+        $products = Product::with('department')->get();
+        return view('layouts.frontEnd.pages.dashboard',compact('offers','categories','products'));
     }
     public function product($id)
     {
@@ -47,7 +48,6 @@ class HomeController extends Controller
             'specifications' => $this->specifications,
             'definitions'    => $this->definitions]);
     }
-
     public function filter($department_id)
     {
         $this->departmentId = $department_id;
@@ -95,12 +95,49 @@ class HomeController extends Controller
         ->orderBy('sort','asc')
         ->get();
     }
-
     private function prepareMainData($department_id)
     {
         $this->categories = $this->categories();
         $this->definitions = $this->definitions($department_id);
         $this->specifications =  $this->specifications($department_id);
+    }
+    public function fetch(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+            $data = Product::where('en_product_name', 'LIKE', "%{$query}%")
+            ->orWhere('ar_product_name', 'LIKE', "%{$query}%")
+            ->get();
+
+            $output = '<ul class="dropdown-menu" style="display:block;margin-top: -3px;width: 100%;padding: 5px;">';
+            foreach($data as $row)
+            {
+                $search = session('lang') == 'ar' ? $row->ar_product_name : $row->en_product_name ;
+            $output .= '
+                <li><a href="#">'.$search.'</a></li>
+                 ';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+    public function productSearch($department_id = null)
+    {
+        $this->departmentId = $department_id;
+        $this->prepareMainData($department_id);
+
+        $query = request('searchBox');
+
+        $products = Product::where('en_product_name', 'LIKE', "%{$query}%")
+        ->orWhere('ar_product_name', 'LIKE', "%{$query}%")
+        ->paginate(15);
+
+        return view('layouts.frontEnd.pages.allProducts',[
+            'categories'     => $this->categories,
+            'products'       => $products,
+            'specifications' => $this->specifications,
+            'definitions'    => $this->definitions]);
     }
 
 }

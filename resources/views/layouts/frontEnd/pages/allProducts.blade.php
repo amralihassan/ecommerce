@@ -31,7 +31,7 @@
                         @if (count($definitions) > 0)
                             <form action="{{route('products.filter',$definitions[0]->department->id)}}" method="get" id="formProducts">
                                 @foreach ($specifications as $specification)
-                                <h5>{{$specification->ar_specification_name}}</h5>
+                                <h5><strong>{{$specification->ar_specification_name}}</strong></h5>
                                 {{-- <div id="basic-list"> --}}
                                     {{-- <input type="text" class="search form-control mb-1 mt-1" placeholder="{{$specification->ar_specification_name}}"/> --}}
                                     <ul class="list-group list ">
@@ -39,8 +39,8 @@
                                             @foreach ($specification->definitions as $item)
                                                     @foreach ($definitions as $definition)
                                                             @if ($item->id == $definition->id)
-                                                                <li class="list-group-item product-list-group-item">
-                                                                    <div class="form-group name filter">
+                                                                <li class="list-group-item product-list-group-item ">
+                                                                    <div class=" name filter">
                                                                         <input type="checkbox"
                                                                         {{session()->has('filter') ? in_array($item->ar_value,session('filter')) ? 'checked' : '' : ''}}
                                                                         name="{{$definition->id}}" value="{{$item->ar_value}}"> {{$item->ar_value}}
@@ -115,7 +115,6 @@
     <script>
         // filter
         $(".filter").change(function() {
-            // var data = $('#formProducts').serialize();
             $('#formProducts').submit();
         });
     </script>

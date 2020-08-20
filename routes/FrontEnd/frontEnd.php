@@ -15,6 +15,11 @@ Route::group(['namespace'=>'FrontEnd'],function(){
     // filter all products
     Route::get('/all/products/filter/{department_id}','HomeController@filter')->name('products.filter');
 
+    // autocomplete search
+    Route::post('/autocomplete/fetch', 'HomeController@fetch')->name('autocomplete.fetch');
+    Route::get('/product/search/{department_id}', 'HomeController@productSearch')->name('product.search');
+
+
     /**
      * all users
      */

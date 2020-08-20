@@ -85,7 +85,7 @@
                         <div class="col-xl-4 col-md-6 col-sm-4" >
                             <div class="all-products-item">
                                 <a href="{{route('product',$product->id)}}">
-                                    <img class="card-img-top img-fluid" src="{{asset('images/product_images/'.$product->product_image)}}">
+                                    <img style="width: 300px; height:300px" class="card-img-top img-fluid" src="{{asset('images/product_images/'.$product->product_image)}}">
                                 </a>
                                 <div class="card-body">
                                     <p style="min-height: 80px" class="card-text">{{$product->ar_product_name}}</p>

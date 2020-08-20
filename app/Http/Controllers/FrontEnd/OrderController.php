@@ -22,7 +22,8 @@ class OrderController extends Controller
     public function index()
     {
         $categories = Category::with('departments')->orderBy('sort','asc')->get();
-        $orders = auth()->user()->orders;
+        $orders = auth()->user()->orders()->paginate(5);
+        // dd($orders);
         $products = Product::all();
         $purchases = $orders->transform(function($cart,$key){
             return unserialize($cart->cart);

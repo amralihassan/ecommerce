@@ -42,6 +42,7 @@ class AdminAuth extends Controller
     {
     	adminAuth()->logout();
         session()->forget('login');
+        session()->forget('lang');
         alert()->success(trans('msg.log_out'), trans('msg.good_bye'));
     	return redirect(aurl('login'));
     }

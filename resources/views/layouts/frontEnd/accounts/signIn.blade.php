@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="rtl">
+<html class="loading" >
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,11 +18,12 @@
   {{-- sweet alert style --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 
-  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/vendors.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/vendors/css/forms/icheck/icheck.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/vendors/css/forms/icheck/custom.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/vendors/css/forms/icheck/icheck.css')}}">
   <!-- END VENDOR CSS-->
-  <!-- BEGIN MODERN CSS-->
+  @if (session('lang') == trans('admin.ar') || session('lang') == 'ar')
+ <!-- BEGIN MODERN CSS-->
+  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/vendors.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/app.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/custom-rtl.css')}}">
   <!-- END MODERN CSS-->
@@ -33,7 +34,23 @@
   <!-- END Page Level CSS-->
   <!-- BEGIN Custom CSS-->
   <script src="{{ asset('js/app.js') }}"></script>
-  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/assets/css/style-rtl.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('cpanel/assets/css/style.css')}}">
+  @else
+ <!-- BEGIN MODERN CSS-->
+ <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/vendors.css')}}">
+ <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/app.css')}}">
+ <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/custom.css')}}">
+ <!-- END MODERN CSS-->
+ <!-- BEGIN Page Level CSS-->
+ <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+ <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/core/colors/palette-gradient.css')}}">
+ <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css/pages/login-register.css')}}">
+ <!-- END Page Level CSS-->
+ <!-- BEGIN Custom CSS-->
+ <script src="{{ asset('js/app.js') }}"></script>
+ <link rel="stylesheet" type="text/css" href="{{asset('cpanel/assets/css/style.css')}}">
+  @endif
+
   <!-- END Custom CSS-->
   <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
 
@@ -105,7 +122,7 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                         <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i> {{trans('admin.login')}}</button>
                     </form>
                     <div class="col-md-12 mt-1 text-center "><a href="{{route('users.signUp')}}" class="card-link">{{trans('admin.new_account')}}</a></div>
-                    
+
                   </div>
                 </div>
               </div>

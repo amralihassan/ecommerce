@@ -77,6 +77,7 @@ class UserController extends Controller
     	auth()->guard('web')->logout();
         session()->forget('user_login');
         session()->forget('cart');
+        session()->forget('lang');
     	return redirect()->route('home');
     }
 }

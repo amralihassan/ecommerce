@@ -28,11 +28,11 @@
         </li>
         @if (count($categories) > 0)
         @foreach ($categories as $category)
-        <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="nav.dash.main">{{$category->ar_category_name}}</span></a>
+        <li class=" nav-item"><a href="#"><span class="menu-title" data-i18n="nav.dash.main">{{session('lang') == 'ar' ?$category->ar_category_name : $category->en_category_name}}</span></a>
             <ul class="menu-content">
                 @foreach ($category->departments as $department)
                     <li>
-                        <a class="menu-item" href="{{route('all.products',$department->id)}}" data-i18n="nav.dash.ecommerce">{{$department->ar_department_name}}</a>
+                        <a class="menu-item" href="{{route('all.products',$department->id)}}" data-i18n="nav.dash.ecommerce">{{session('lang') =='ar' ?$department->ar_department_name:$department->en_department_name}}</a>
                     </li>
                 @endforeach
             </ul>

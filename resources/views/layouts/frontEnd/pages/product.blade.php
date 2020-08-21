@@ -29,14 +29,7 @@
     </div>
 </div>
 <div class="row product-continer product-continer-top mt-2">
-    <div class="col-5 col-xs-12 product-inside">
-        <figure class="col-lg-12 col-md-6 col-12" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-            <a href="{{asset('images/product_images/'.$product->product_image)}}" itemprop="contentUrl" data-size="480x360">
-              <img class="img-thumbnail img-fluid" src="{{asset('images/product_images/'.$product->product_image)}}"
-              itemprop="thumbnail" alt="Image description" />
-            </a>
-          </figure>
-    </div>
+    @include('layouts.frontEnd.pages._productImages')
     <div class="col-4 col-xs-12 product-inside">
         <h4 class="red">
             @if (session('lang') =='ar')
@@ -54,8 +47,8 @@
         <p class="product-ship-tip">{{$product->note}}</p>
         <a href="{{route('cart.add',$product->id)}}"  class="btn btn-dark round btn-min-width mr-1 mb-1">{{ trans('admin.add_cart') }}</a>
         <hr>
-        <h6><strong>حالة السلعة :</strong> {{$product->item_condition}}</h6>
-        <h6><strong>البائع :</strong> {{$product->seller->seller_name}}</h6>
+        <h6><strong>{{ trans('admin.item_condition')}} :</strong> {{$product->item_condition}}</h6>
+        <h6><strong>{{ trans('admin.seller')}} :</strong> {{$product->seller->seller_name}}</h6>
     </div>
 </div>
 <div class="row product-continer mt-2" style="min-height: 200px">
@@ -66,7 +59,7 @@
             <ul class="nav nav-tabs nav-underline no-hover-bg">
               <li class="nav-item">
                 <a class="nav-link active" id="base-tab31" data-toggle="tab" aria-controls="tab31"
-                href="#tab31" aria-expanded="true">المواصفات</a>
+                href="#tab31" aria-expanded="true">{{session('lang') =='ar' ? trans('admin.ar_description'):trans('admin.en_description')}}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="base-tab33" data-toggle="tab" aria-controls="tab33" href="#tab33"
@@ -77,7 +70,9 @@
               <div role="tabpanel" class="tab-pane active" id="tab31" aria-expanded="true" aria-labelledby="base-tab31">
                   <table>
                         @foreach ($product->productSpecifications as $item)
-                            <tr><th class="w-50">{{$item->specification->ar_specification_name}}</th><td>{{$item->definition->ar_value}}</td></tr>
+                            <tr><th class="w-50">{{session('lang') =='ar'?$item->specification->ar_specification_name:$item->specification->en_specification_name}}</th>
+                                <td class="pl-1">{{session('lang') =='ar' ?$item->definition->ar_value:$item->definition->en_value}}</td>
+                            </tr>
                         @endforeach
                   </table>
               </div>
@@ -95,3 +90,4 @@
 
   </div>
 @endsection
+
